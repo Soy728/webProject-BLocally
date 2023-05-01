@@ -14,7 +14,7 @@
 	.root {
 		width: 15rem;
 		height: 20rem;
-		background-color: beige;
+		border: 1px solid gray;
 
 		.seller-name {
 			font-size: 1rem;

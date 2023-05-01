@@ -1,7 +1,7 @@
 <script lang="ts">
 	import _ from 'lodash';
 	import { ButtonBorderProps } from './index';
-	import { css, attr, type CSSProperties } from '../../util/style';
+	import { css, attr, type CSSProperties } from '@src/util/style';
 
 	export let size: 'xs' | 'sm' | 'md' | 'lg' = 'sm';
 	// export let color: string;

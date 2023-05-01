@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Header } from '../components-route/header';
+	import { Header } from '@src/components-route/header';
 </script>
 
 <Header />
