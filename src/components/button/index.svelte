@@ -10,6 +10,8 @@
 	export let border: ButtonBorderProps = ButtonBorderProps.NONE;
 	export let width: string | undefined = undefined;
 	export let fit: boolean = false;
+	export let onClick: (() => void) | undefined = undefined;
+	export let link: string | undefined = undefined;
 
 	export let style: CSSProperties = {};
 	let _style: CSSProperties;
@@ -21,32 +23,66 @@
 	}
 </script>
 
-<div
-	class="button-container"
-	data-button
-	style={css(_style)}
-	data-size={attr(size)}
-	data-fit={attr(fit)}
-	data-disable={attr(disable)}
-	data-ghost={attr(ghost)}
-	data-border={attr(border)}
->
-	{#if $$slots['left-icon']}
-		<div data-left-icon class="left-icon-container">
-			<slot name="left-icon" />
+{#if link}
+	<a href={link}>
+		<div
+			class="button-container"
+			data-button
+			style={css(_style)}
+			data-size={attr(size)}
+			data-fit={attr(fit)}
+			data-disable={attr(disable)}
+			data-ghost={attr(ghost)}
+			data-border={attr(border)}
+		>
+			{#if $$slots['left-icon']}
+				<div data-left-icon class="left-icon-container">
+					<slot name="left-icon" />
+				</div>
+			{/if}
+			<div class="container" data-text>
+				<slot />
+			</div>
+			{#if $$slots['right-icon']}
+				<div data-right-icon class="right-icon-container">
+					<slot name="right-icon" />
+				</div>
+			{/if}
 		</div>
-	{/if}
-	<div class="container" data-text>
-		<slot />
+	</a>
+{:else}
+	<div
+		class="button-container"
+		data-button
+		style={css(_style)}
+		data-size={attr(size)}
+		data-fit={attr(fit)}
+		data-disable={attr(disable)}
+		data-ghost={attr(ghost)}
+		data-border={attr(border)}
+		on:click={() => onClick && onClick()}
+	>
+		{#if $$slots['left-icon']}
+			<div data-left-icon class="left-icon-container">
+				<slot name="left-icon" />
+			</div>
+		{/if}
+		<div class="container" data-text>
+			<slot />
+		</div>
+		{#if $$slots['right-icon']}
+			<div data-right-icon class="right-icon-container">
+				<slot name="right-icon" />
+			</div>
+		{/if}
 	</div>
-	{#if $$slots['right-icon']}
-		<div data-right-icon class="right-icon-container">
-			<slot name="right-icon" />
-		</div>
-	{/if}
-</div>
+{/if}
 
 <style lang="scss">
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
 	.button-container {
 		display: flex;
 		align-items: center;
@@ -70,19 +106,19 @@
 		}
 
 		&[data-size='xs'] {
-			height: 1rem;
+			height: 1.3rem;
 			font-size: 0.7rem;
 		}
 		&[data-size='sm'] {
-			height: 1.2rem;
+			height: 1.6rem;
 			font-size: 0.8rem;
 		}
 		&[data-size='md'] {
-			height: 1.5rem;
+			height: 2rem;
 			font-size: 1rem;
 		}
 		&[data-size='lg'] {
-			height: 1.8rem;
+			height: 2.6rem;
 			font-size: 1.2rem;
 		}
 

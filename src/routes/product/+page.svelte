@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { SellerItem } from '@src/components-route/seller-item';
+	import { ProductItem } from '@src/components-route/product-item';
 </script>
 
 <div class="root">
 	<div class="best-seller-banner">BEST SELLER BANNER</div>
-	<div class="seller-items">
+	<div class="product-items">
 		{#each Array(3) as _, idx}
-			<SellerItem seller={{ sellerName: '', sellerLocation: '' }} />
-			<SellerItem seller={{ sellerName: '', sellerLocation: '' }} />
-			<SellerItem seller={{ sellerName: '', sellerLocation: '' }} />
-			<SellerItem seller={{ sellerName: '', sellerLocation: '' }} />
-			<SellerItem seller={{ sellerName: '', sellerLocation: '' }} />
+			<ProductItem />
+			<ProductItem />
+			<ProductItem />
+			<ProductItem />
+			<ProductItem />
 		{/each}
 	</div>
 </div>
@@ -24,7 +24,7 @@
 			justify-content: center;
 			align-items: center;
 		}
-		.seller-items {
+		.product-items {
 			display: flex;
 			align-items: center;
 			justify-content: center;

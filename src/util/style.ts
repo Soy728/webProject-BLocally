@@ -2,6 +2,7 @@ import type { Properties } from 'csstype';
 import _ from 'lodash';
 
 export type CSSProperties = Properties;
+
 export function createStyle(key: string, value: string | undefined) {
 	if (value === undefined) {
 		return '';

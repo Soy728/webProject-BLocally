@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { Button } from '@src/components/button';
 	import { Search } from '@src/components/search';
+	import { Category } from '.';
 </script>
 
 <div class="root">
 	<div class="menu-container">
 		<div class="base-menu">
 			<Button>마이페이지</Button>
-			<Button>dummy</Button>
 		</div>
 		<div class="user-menu">
 			<Button>로그인</Button>
@@ -20,16 +20,18 @@
 	<div class="search-container">
 		<Search />
 	</div>
+	<Category />
 </div>
 
 <style lang="scss">
 	.root {
 		width: 100%;
-		height: 10rem;
+		height: 13rem;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: 1.5rem;
+		white-space: nowrap;
 
 		.menu-container {
 			width: 100%;
