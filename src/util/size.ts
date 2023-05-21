@@ -5,7 +5,7 @@ export const Size = {
 		sm: 1.6,
 		md: 2,
 		lg: 2.6,
-		xl: 3
+		xl: 3.5
 	},
 	String: {
 		xxs: '1.1rem',
@@ -13,6 +13,14 @@ export const Size = {
 		sm: '1.6rem',
 		md: '2rem',
 		lg: '2.6rem',
-		xl: '3rem'
+		xl: '3.5rem'
 	}
 };
+
+export enum ComponentSizeProps {
+	XS = 'xs',
+	SM = 'sm',
+	MD = 'md',
+	LG = 'lg',
+	XL = 'xl'
+}

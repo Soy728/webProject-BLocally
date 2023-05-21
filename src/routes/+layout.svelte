@@ -14,13 +14,15 @@
 <style lang="scss">
 	.root {
 		width: 100%;
-		height: 100%;
 		padding: 1rem 0rem;
 
 		.contents {
 			max-width: 90rem;
-			width: 100%;
-			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			//	height: 100%;
+			height: calc(100% - 13rem);
 			padding: 1.5rem 4rem;
 			margin: 0 auto;
 		}

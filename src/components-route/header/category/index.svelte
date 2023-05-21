@@ -1,17 +1,19 @@
 <script lang="ts">
 	import { Button } from '@src/components/button';
-
-	let size: 'xs' | 'sm' | 'md' | 'lg' = 'md';
+	import { ComponentSizeProps } from '@src/util/size';
+	import { Palette } from '@src/util/palette';
+	let size: ComponentSizeProps = ComponentSizeProps.LG;
 </script>
 
 <div class="root">
 	<div class="category-container">
-		<Button link={'/'} {size}>홈</Button>
-		<Button link={'/seller'} {size}>로컬농장</Button>
-		<Button link={'/product'} {size}>상품</Button>
-		<Button link={'/regular-delivery'} {size}>정기배송</Button>
-		<Button {size}>이벤트</Button>
-		<Button {size}>농장체험</Button>
+		<Button color={Palette.Color.SECONDARY} ghost link={'/'} {size}>홈</Button>
+		<Button color={Palette.Color.SECONDARY} ghost link={'/seller'} {size}>로컬농장</Button>
+		<Button color={Palette.Color.SECONDARY} ghost link={'/product'} {size}>상품</Button>
+		<Button color={Palette.Color.SECONDARY} ghost link={'/regular-delivery'} {size}>정기배송</Button
+		>
+		<Button color={Palette.Color.SECONDARY} ghost {size}>이벤트</Button>
+		<Button color={Palette.Color.SECONDARY} ghost {size}>농장체험</Button>
 	</div>
 </div>
 

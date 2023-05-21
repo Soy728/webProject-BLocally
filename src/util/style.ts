@@ -25,3 +25,10 @@ export function attr<T>(v: T) {
 	return !_.isEmpty(v) || v ? v : undefined;
 }
 export const css = createStyles;
+
+export function getStyleStringUnit(
+	width: number | string | undefined,
+	defaults: string | undefined = 'auto'
+) {
+	return width !== undefined ? (isNaN(Number(width)) ? String(width) : `${width}rem`) : 'auto';
+}

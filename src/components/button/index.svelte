@@ -2,30 +2,45 @@
 	import _ from 'lodash';
 	import { ButtonBorderProps } from './index';
 	import { css, attr, type CSSProperties } from '@src/util/style';
+	import { ComponentSizeProps } from '@src/util/size';
+	import { Palette } from '@src/util/palette';
 
-	export let size: 'xs' | 'sm' | 'md' | 'lg' = 'sm';
-	// export let color: string;
+	export let size: ComponentSizeProps = ComponentSizeProps.MD;
+	export let color: Palette.Color = Palette.Color.PRIMARY;
 	export let disable: boolean = false;
 	export let ghost: boolean = false;
 	export let border: ButtonBorderProps = ButtonBorderProps.NONE;
+
 	export let width: string | undefined = undefined;
 	export let fit: boolean = false;
 	export let onClick: (() => void) | undefined = undefined;
 	export let link: string | undefined = undefined;
+	export let noAction: boolean = false;
 
 	export let style: CSSProperties = {};
+	let status: Palette.Action = Palette.Action.BASE;
 	let _style: CSSProperties;
+	let _fontStyle: CSSProperties = {};
 
 	$: {
 		_style = _.cloneDeep(style);
 		_style.width = width;
-		// _style.backgroundColor = color;
+		_style.backgroundColor = color;
 	}
+
+	$: !noAction && (_fontStyle.color = Palette.ColorUnit[color][status].color);
+	$: !noAction && (_style.background = Palette.ColorUnit[color][status].backgroundColor);
+	$: !noAction && border && (_style.borderColor = Palette.ColorUnit[color][status].borderColor);
+	$: ghost && (_fontStyle.color = 'black');
 </script>
 
 {#if link}
 	<a href={link}>
 		<div
+			on:mouseenter={() => (status = Palette.Action.HOVER)}
+			on:mouseleave={() => (status = Palette.Action.BASE)}
+			on:mousedown={() => (status = Palette.Action.ACTIVE)}
+			on:mouseup={() => (status = Palette.Action.HOVER)}
 			class="button-container"
 			data-button
 			style={css(_style)}
@@ -40,7 +55,7 @@
 					<slot name="left-icon" />
 				</div>
 			{/if}
-			<div class="container" data-text>
+			<div class="container" style={css(_fontStyle)} data-text>
 				<slot />
 			</div>
 			{#if $$slots['right-icon']}
@@ -52,6 +67,10 @@
 	</a>
 {:else}
 	<div
+		on:mouseenter={() => (status = Palette.Action.HOVER)}
+		on:mouseleave={() => (status = Palette.Action.BASE)}
+		on:mousedown={() => (status = Palette.Action.ACTIVE)}
+		on:mouseup={() => (status = Palette.Action.HOVER)}
 		class="button-container"
 		data-button
 		style={css(_style)}
@@ -67,7 +86,7 @@
 				<slot name="left-icon" />
 			</div>
 		{/if}
-		<div class="container" data-text>
+		<div class="container" data-text style={css(_fontStyle)}>
 			<slot />
 		</div>
 		{#if $$slots['right-icon']}
@@ -90,13 +109,8 @@
 		padding: 0rem 1rem;
 		width: fit-content;
 		border-radius: 0.2rem;
+		font-weight: 300;
 
-		.container {
-			&[data-fit-items] {
-				flex: 1 0;
-				text-align: center;
-			}
-		}
 		.left-icon-container .right-icon-container {
 			height: 100%;
 		}
@@ -106,24 +120,31 @@
 		}
 
 		&[data-size='xs'] {
-			height: 1.3rem;
-			font-size: 0.7rem;
+			height: $component-height-xs;
+			font-size: $component-font-size-xs;
 		}
 		&[data-size='sm'] {
-			height: 1.6rem;
-			font-size: 0.8rem;
+			height: $component-height-sm;
+			font-size: $component-font-size-xs;
 		}
 		&[data-size='md'] {
-			height: 2rem;
-			font-size: 1rem;
+			height: $component-height-md;
+			font-size: $component-font-size-sm;
 		}
 		&[data-size='lg'] {
-			height: 2.6rem;
-			font-size: 1.2rem;
+			height: $component-height-lg;
+			font-size: $component-font-size-md;
+		}
+
+		&[data-size='xl'] {
+			height: $component-height-xl;
+			font-size: $component-font-size-xl;
 		}
 
 		&[data-fit] {
 			width: 100%;
+
+			text-align: center;
 		}
 		&[data-disable] {
 			opacity: 40%;
@@ -132,12 +153,14 @@
 
 		&[data-ghost] {
 			background-color: transparent !important;
-			opacity: 0.7;
+			opacity: 0.8;
 			transition: opacity 0.2s;
+
 			&:hover {
 				//border있고 ghost인 경우, border 변화
 				// border-color: var(--component-base05);
 				opacity: 1;
+				font-weight: 400;
 			}
 			// &[data-border='none'] {
 			// 	&:hover {

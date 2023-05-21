@@ -7,13 +7,13 @@
 <div class="root">
 	<div class="menu-container">
 		<div class="base-menu">
-			<Button>마이페이지</Button>
+			<Button noAction ghost>마이페이지</Button>
 		</div>
 		<div class="user-menu">
-			<Button>로그인</Button>
-			<Button>회원가입</Button>
-			<Button>주문/배송조회</Button>
-			<Button>장바구니</Button>
+			<Button ghost noAction link={'/login'}>로그인</Button>
+			<Button ghost noAction link={'/join'}>회원가입</Button>
+			<Button ghost noAction>주문/배송조회</Button>
+			<Button ghost noAction>장바구니</Button>
 		</div>
 	</div>
 

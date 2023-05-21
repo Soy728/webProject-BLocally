@@ -17,6 +17,7 @@
 
 <style lang="scss">
 	.root {
+		height: 100%;
 		.best-seller-banner {
 			height: 25rem;
 			width: 100%;
