@@ -8,7 +8,7 @@
 	<div class="contents">
 		<slot />
 	</div>
-	<QuickMenu />
+	<!-- <QuickMenu /> -->
 </div>
 
 <style lang="scss">
