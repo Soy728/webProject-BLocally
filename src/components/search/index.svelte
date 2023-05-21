@@ -4,11 +4,15 @@
 	import { Input } from '@src/components/input';
 	import { ComponentSizeProps } from '@src/util/size';
 
+	import { attr } from '@src/util/style';
+
 	export let placeholder: string = 'Search';
+	let focus = false;
 </script>
 
-<div class="searchbar-container">
+<div class="searchbar-container" data-focus={attr(focus)}>
 	<Input
+		bind:focus
 		{placeholder}
 		size={ComponentSizeProps.LG}
 		width="100%"
@@ -27,5 +31,10 @@
 		width: 100%;
 		max-width: 40rem;
 		padding: 0rem 1rem;
+		border: 2px solid transparent;
+
+		&[data-focus] {
+			border: 2px solid #73b349;
+		}
 	}
 </style>

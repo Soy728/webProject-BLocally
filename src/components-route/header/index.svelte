@@ -47,6 +47,7 @@
 
 		.search-container {
 			width: 100%;
+			padding: 1.5rem 0rem;
 			display: flex;
 			justify-content: center;
 		}
