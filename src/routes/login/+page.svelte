@@ -1,4 +1,5 @@
 <script lang="ts">
+	import _ from 'lodash';
 	import { Input } from '@src/components/input';
 	import { Button } from '@src/components/button';
 	import { ComponentSizeProps } from '@src/util/size';
@@ -8,6 +9,11 @@
 	let password = '';
 
 	function handleLogin() {
+		if (_.isEmpty(username) || _.isEmpty(password)) {
+			alert('입력되지 않은 정보가 있습니다 :(');
+			return;
+		}
+
 		let data = {
 			username,
 			password
@@ -55,9 +61,11 @@
 		</Button>
 
 		<div class="button-tag">
-			<Button ghost noAction link={'/join'}>회원가입</Button>
-			<Button ghost noAction link={'/join'}>아이디 찾기</Button>
-			<Button ghost noAction link={'/join'}>비밀번호 변경</Button>
+			<Button size={ComponentSizeProps.LG} ghost noAction link={'/join'}>회원가입</Button>
+			<div class="line" />
+			<Button size={ComponentSizeProps.LG} ghost noAction link={'/join'}>아이디 찾기</Button>
+			<div class="line" />
+			<Button size={ComponentSizeProps.LG} ghost noAction link={'/join'}>비밀번호 변경</Button>
 		</div>
 	</div>
 </div>
@@ -75,7 +83,7 @@
 
 		.content {
 			width: 100%;
-			gap: 2rem;
+			gap: 2.5rem;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -87,8 +95,16 @@
 			.button-tag {
 				display: flex;
 				width: 100%;
+				height: 1.2rem;
 				flex-direction: row;
+				align-items: center;
 				justify-content: flex-end;
+				.line {
+					width: 1px;
+					height: 0.8rem;
+					background-color: gray;
+					opacity: 0.3;
+				}
 			}
 			.input-container {
 				height: 100%;

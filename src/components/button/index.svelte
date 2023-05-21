@@ -1,6 +1,6 @@
 <script lang="ts">
 	import _ from 'lodash';
-	import { ButtonBorderProps } from './index';
+
 	import { css, attr, type CSSProperties } from '@src/util/style';
 	import { ComponentSizeProps } from '@src/util/size';
 	import { Palette } from '@src/util/palette';
@@ -9,7 +9,7 @@
 	export let color: Palette.Color = Palette.Color.PRIMARY;
 	export let disable: boolean = false;
 	export let ghost: boolean = false;
-	export let border: ButtonBorderProps = ButtonBorderProps.NONE;
+	export let border: boolean = false;
 
 	export let width: string | undefined = undefined;
 	export let fit: boolean = false;
@@ -18,9 +18,10 @@
 	export let noAction: boolean = false;
 
 	export let style: CSSProperties = {};
+	export let fontStyle: CSSProperties = {};
 	let status: Palette.Action = Palette.Action.BASE;
 	let _style: CSSProperties;
-	let _fontStyle: CSSProperties = {};
+	let _fontStyle: CSSProperties = _.cloneDeep(fontStyle);
 
 	$: {
 		_style = _.cloneDeep(style);
@@ -30,7 +31,9 @@
 
 	$: !noAction && (_fontStyle.color = Palette.ColorUnit[color][status].color);
 	$: !noAction && (_style.background = Palette.ColorUnit[color][status].backgroundColor);
-	$: !noAction && border && (_style.borderColor = Palette.ColorUnit[color][status].borderColor);
+	$: !noAction &&
+		border &&
+		(_style.border = `1px solid ${Palette.ColorUnit[color][status].borderColor}`);
 	$: ghost && (_fontStyle.color = 'black');
 </script>
 
@@ -48,7 +51,6 @@
 			data-fit={attr(fit)}
 			data-disable={attr(disable)}
 			data-ghost={attr(ghost)}
-			data-border={attr(border)}
 		>
 			{#if $$slots['left-icon']}
 				<div data-left-icon class="left-icon-container">
@@ -78,7 +80,6 @@
 		data-fit={attr(fit)}
 		data-disable={attr(disable)}
 		data-ghost={attr(ghost)}
-		data-border={attr(border)}
 		on:click={() => onClick && onClick()}
 	>
 		{#if $$slots['left-icon']}
@@ -109,7 +110,7 @@
 		padding: 0rem 1rem;
 		width: fit-content;
 		border-radius: 0.2rem;
-		font-weight: 300;
+		font-weight: 400;
 
 		.left-icon-container .right-icon-container {
 			height: 100%;
@@ -160,7 +161,7 @@
 				//border있고 ghost인 경우, border 변화
 				// border-color: var(--component-base05);
 				opacity: 1;
-				font-weight: 400;
+				font-weight: 500;
 			}
 			// &[data-border='none'] {
 			// 	&:hover {
@@ -169,18 +170,6 @@
 			// 	}
 			// }
 		}
-
-		&[data-border='none'] {
-			border: none;
-		}
-		&[data-border='soft'] {
-			border: 1px solid var(--hq-base-0400) !important;
-		}
-		&[data-border='normal'] {
-			border: 1px solid var(--overlay-2x);
-		}
-		&[data-border='hard'] {
-			border: 1px solid var(--overlay-4x);
-		}
+		border: none;
 	}
 </style>

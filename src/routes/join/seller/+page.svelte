@@ -127,7 +127,8 @@
 					/>
 
 					<Button
-						width="10rem"
+						fontStyle={{ fontSize: '1.1rem' }}
+						width="8rem"
 						color={Palette.Color.PRIMARY}
 						size={ComponentSizeProps.XL}
 						onClick={() => {}}>인증받기</Button
@@ -139,7 +140,8 @@
 				<div class="detail">
 					<Input border fit size={ComponentSizeProps.XL} placeholder={'인증번호'} />
 					<Button
-						width="10rem"
+						fontStyle={{ fontSize: '1.1rem' }}
+						width="8rem"
 						color={Palette.Color.PRIMARY}
 						size={ComponentSizeProps.XL}
 						onClick={() => {}}>확인</Button
@@ -158,7 +160,8 @@
 						placeholder={'사업자 등록번호'}
 					/>
 					<Button
-						width="10rem"
+						fontStyle={{ fontSize: '1.1rem' }}
+						width="8rem"
 						color={Palette.Color.PRIMARY}
 						size={ComponentSizeProps.XL}
 						onClick={() => {}}
@@ -189,7 +192,8 @@
 						placeholder={'프로필 이미지'}
 					/>
 					<Button
-						width="10rem"
+						fontStyle={{ fontSize: '1.1rem' }}
+						width="8rem"
 						color={Palette.Color.PRIMARY}
 						size={ComponentSizeProps.XL}
 						onClick={() => {}}
