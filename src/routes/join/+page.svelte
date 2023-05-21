@@ -1,5 +1,40 @@
+<script>
+	let username = '';
+	let password = '';
+	let email = '';
+
+	function handleInsertUser() {
+		let data = {
+			username,
+			password,
+			email
+		};
+
+		console.log(JSON.stringify(data));
+
+		let url = 'http://localhost:8081/auth/insertUser';
+
+		fetch(url, {
+			method: 'POST',
+			mode: 'cors', //중요!!!
+			headers: {
+				'Content-Type': 'application/json; charset=utf-8'
+			},
+			body: JSON.stringify(data)
+		})
+			.then((res) => res.json())
+			.then((response) => {
+				let message = response['data'];
+				alert(message);
+			})
+			.catch((error) => {
+				alert('에러: ' + error.message);
+			});
+	}
+</script>
+
 <div class="container mt-3">
-	<form action="/action_page.php">
+	<form action="/auth/insertUser">
 		<div class="mb-3 mt-3">
 			<label for="uname" class="form-label">Username:</label>
 			<input
@@ -8,6 +43,7 @@
 				id="username"
 				placeholder="Enter username"
 				name="username"
+				bind:value={username}
 			/>
 		</div>
 
@@ -16,15 +52,23 @@
 			<input
 				type="password"
 				class="form-control"
-				id="pwd"
+				id="password"
 				placeholder="Enter password"
 				name="pswd"
+				bind:value={password}
 			/>
 		</div>
 
 		<div class="mb-3 mt-3">
 			<label for="email" class="form-label">Email:</label>
-			<input type="email" class="form-control" id="email" placeholder="Enter email" name="email" />
+			<input
+				type="email"
+				class="form-control"
+				id="email"
+				placeholder="Enter email"
+				name="email"
+				bind:value={email}
+			/>
 		</div>
 
 		<div class="mb-3 mt-3">
@@ -130,5 +174,25 @@
 			</label>
 		</div>
 	</form>
-	<button id="btn-save" class="btn btn-secondary">회원가입</button>
+	<button id="btn-save" class="btn btn-secondary" on:click={handleInsertUser}>회원가입</button>
 </div>
+
+<style lang="scss">
+	.root {
+		.best-seller-banner {
+			height: 25rem;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.product-items {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 1rem;
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+		}
+	}
+</style>
