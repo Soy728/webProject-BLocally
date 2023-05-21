@@ -14,7 +14,7 @@
 	export let backgroundColor: string | undefined = undefined;
 	export let borderRadius: string | undefined = undefined;
 	export let margin: string | undefined = undefined;
-	export let color: string = 'gray';
+	export let color: string | undefined = undefined;
 
 	export let styleContainer: CSSProperties = {};
 	export let style: CSSProperties = {};
@@ -27,6 +27,7 @@
 		_style = _.cloneDeep(style);
 		_icon = _.cloneDeep(icon);
 	}
+	$: color = color ? color : 'currentColor';
 </script>
 
 <div

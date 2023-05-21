@@ -38,7 +38,6 @@
 			.text {
 				padding: 2rem;
 				font-size: 1.8rem;
-				font-weight: 500;
 			}
 			.button-container {
 				padding-top: 3rem;

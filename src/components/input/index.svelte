@@ -5,7 +5,6 @@
 	import { getStyleStringUnit, attr, css } from '@src/util/style';
 	import { createEventDispatcher } from 'svelte';
 	import { Palette } from '@src/util/palette';
-	import { Icon, type IconProp } from '@src/components/icon';
 
 	export let size: ComponentSizeProps = ComponentSizeProps.MD;
 	export let border: boolean = false;
@@ -13,7 +12,6 @@
 	export let width: number | string | undefined = undefined;
 	export let color: Palette.Color = Palette.Color.SECONDARY;
 	export let type: 'text' | 'password' = 'text';
-	export let icon: IconProp | undefined = undefined;
 
 	export let focus: boolean = false;
 	export let error: boolean = false;
@@ -49,7 +47,6 @@
 
 	$: status && border && (_style.borderColor = Palette.ColorUnit[color][status].borderColor);
 	$: eleRoot && (eleRoot.type = type);
-	$: _icon = _.cloneDeep(icon);
 </script>
 
 <div
@@ -62,9 +59,6 @@
 	style={css(_style)}
 	on:keydown|capture|stopPropagation
 >
-	<!-- {#if _icon}
-		<Icon icon={_icon} />
-	{/if} -->
 	<input
 		{placeholder}
 		bind:this={eleRoot}
@@ -84,8 +78,10 @@
 		}}
 	/>
 
-	{#if _icon}
-		<Icon icon={_icon} />
+	{#if $$slots['icon']}
+		<div data-right-icon class="icon-container">
+			<slot name="icon" />
+		</div>
 	{/if}
 </div>
 

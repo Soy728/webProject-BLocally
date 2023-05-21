@@ -175,7 +175,6 @@
 			.text {
 				padding: 2rem;
 				font-size: 1.8rem;
-				font-weight: 500;
 			}
 			.input-container {
 				width: 28rem;
@@ -191,7 +190,6 @@
 					.text {
 						padding: 0.8rem 0rem;
 						font-size: 1.2rem;
-						font-weight: 500;
 					}
 				}
 			}

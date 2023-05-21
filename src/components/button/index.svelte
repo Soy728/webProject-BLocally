@@ -29,12 +29,11 @@
 		_style.backgroundColor = color;
 	}
 
-	$: !noAction && (_fontStyle.color = Palette.ColorUnit[color][status].color);
-	$: !noAction && (_style.background = Palette.ColorUnit[color][status].backgroundColor);
+	$: !noAction && (_style.color = Palette.ColorUnit[color][status].color);
+	$: !noAction && (_style.backgroundColor = Palette.ColorUnit[color][status].backgroundColor);
 	$: !noAction &&
 		border &&
 		(_style.border = `1px solid ${Palette.ColorUnit[color][status].borderColor}`);
-	$: ghost && (_fontStyle.color = 'black');
 </script>
 
 {#if link}
@@ -57,7 +56,7 @@
 					<slot name="left-icon" />
 				</div>
 			{/if}
-			<div class="container" style={css(_fontStyle)} data-text>
+			<div class="container" data-text style={css(_fontStyle)}>
 				<slot />
 			</div>
 			{#if $$slots['right-icon']}
@@ -143,8 +142,7 @@
 		}
 
 		&[data-fit] {
-			width: 100%;
-
+			width: 100% !important;
 			text-align: center;
 		}
 		&[data-disable] {
@@ -161,7 +159,6 @@
 				//border있고 ghost인 경우, border 변화
 				// border-color: var(--component-base05);
 				opacity: 1;
-				font-weight: 500;
 			}
 			// &[data-border='none'] {
 			// 	&:hover {

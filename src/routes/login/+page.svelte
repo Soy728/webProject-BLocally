@@ -90,7 +90,6 @@
 			.text {
 				padding: 2rem;
 				font-size: 1.8rem;
-				font-weight: 500;
 			}
 			.button-tag {
 				display: flex;

@@ -1,12 +1,23 @@
 <script lang="ts">
 	import { Button } from '@src/components/button';
+	import { Icon, IconPropType } from '@src/components/icon';
 	import { ComponentSizeProps } from '@src/util/size';
+	import { mdiMenu, mdiAccount } from '@mdi/js';
 	import { Palette } from '@src/util/palette';
+
 	let size: ComponentSizeProps = ComponentSizeProps.LG;
 </script>
 
 <div class="root">
 	<div class="category-container">
+		<Button color={Palette.Color.SECONDARY} ghost {size}>
+			<Icon
+				icon={{ type: IconPropType.PATH, src: mdiMenu }}
+				style={{ marginTop: '0.1rem' }}
+				slot="left-icon"
+			/>
+			전체 카테고리
+		</Button>
 		<Button color={Palette.Color.SECONDARY} ghost link={'/'} {size}>홈</Button>
 		<Button color={Palette.Color.SECONDARY} ghost link={'/seller'} {size}>로컬농장</Button>
 		<Button color={Palette.Color.SECONDARY} ghost link={'/product'} {size}>상품</Button>
