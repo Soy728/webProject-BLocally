@@ -20,7 +20,8 @@
 		</Button>
 		<Button color={Palette.Color.SECONDARY} ghost link={'/'} {size}>홈</Button>
 		<Button color={Palette.Color.SECONDARY} ghost link={'/seller'} {size}>로컬농장</Button>
-		<Button color={Palette.Color.SECONDARY} ghost link={'/product'} {size}>상품</Button>
+		<Button color={Palette.Color.SECONDARY} ghost link={'/product/category/all'} {size}>상품</Button
+		>
 		<Button color={Palette.Color.SECONDARY} ghost link={'/regular-delivery'} {size}>정기배송</Button
 		>
 		<Button color={Palette.Color.SECONDARY} ghost {size}>이벤트</Button>

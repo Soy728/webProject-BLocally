@@ -30,7 +30,7 @@
 		</Input>
 	</div>
 	{#if !_.isEmpty(value)}
-		<div class="search-box" />
+		<div class="search-box">No-items</div>
 	{/if}
 </div>
 

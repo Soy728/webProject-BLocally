@@ -10,6 +10,7 @@
 	export let disable: boolean = false;
 	export let ghost: boolean = false;
 	export let border: boolean = false;
+	export let borderRadius: boolean = true;
 
 	export let width: string | undefined = undefined;
 	export let fit: boolean = false;
@@ -31,13 +32,13 @@
 
 	$: !noAction && (_style.color = Palette.ColorUnit[color][status].color);
 	$: !noAction && (_style.backgroundColor = Palette.ColorUnit[color][status].backgroundColor);
-	$: !noAction &&
-		border &&
-		(_style.border = `1px solid ${Palette.ColorUnit[color][status].borderColor}`);
+	$: !noAction && border
+		? (_style.border = `1px solid ${Palette.ColorUnit[color][status].borderColor}`)
+		: (_style.border = `1px solid transparent`);
 </script>
 
 {#if link}
-	<a href={link}>
+	<a href={link} data-fit={attr(fit)}>
 		<div
 			on:mouseenter={() => (status = Palette.Action.HOVER)}
 			on:mouseleave={() => (status = Palette.Action.BASE)}
@@ -47,9 +48,11 @@
 			data-button
 			style={css(_style)}
 			data-size={attr(size)}
+			data-borderRadius={attr(borderRadius)}
 			data-fit={attr(fit)}
 			data-disable={attr(disable)}
 			data-ghost={attr(ghost)}
+			on:click={() => onClick && onClick()}
 		>
 			{#if $$slots['left-icon']}
 				<div data-left-icon class="left-icon-container">
@@ -75,6 +78,7 @@
 		class="button-container"
 		data-button
 		style={css(_style)}
+		data-borderRadius={attr(borderRadius)}
 		data-size={attr(size)}
 		data-fit={attr(fit)}
 		data-disable={attr(disable)}
@@ -101,6 +105,10 @@
 	a {
 		color: inherit;
 		text-decoration: none;
+
+		&[data-fit] {
+			width: 100% !important;
+		}
 	}
 	.button-container {
 		display: flex;
@@ -108,7 +116,11 @@
 		justify-content: center;
 		padding: 0rem 1rem;
 		width: fit-content;
-		border-radius: 0.2rem;
+		border-radius: 0rem;
+		&[data-borderRadius] {
+			border-radius: 0.2rem;
+		}
+
 		font-weight: 400;
 
 		.left-icon-container .right-icon-container {
