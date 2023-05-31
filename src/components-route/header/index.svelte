@@ -1,19 +1,22 @@
 <script lang="ts">
 	import { Button } from '@src/components/button';
 	import { Search } from '@src/components/search';
+	import { ComponentSizeProps } from '@src/util/size';
 	import { Category } from '.';
+
+	let size: ComponentSizeProps = ComponentSizeProps.SM;
 </script>
 
 <div class="root">
 	<div class="menu-container">
 		<div class="base-menu">
-			<Button noAction ghost>마이페이지</Button>
+			<Button {size} noAction ghost>마이페이지</Button>
 		</div>
 		<div class="user-menu">
-			<Button ghost noAction link={'/login'}>로그인</Button>
-			<Button ghost noAction link={'/join'}>회원가입</Button>
-			<Button ghost noAction>주문/배송조회</Button>
-			<Button ghost noAction>장바구니</Button>
+			<Button {size} ghost noAction link={'/login'}>로그인</Button>
+			<Button {size} ghost noAction link={'/join'}>회원가입</Button>
+			<Button {size} ghost noAction>주문/배송조회</Button>
+			<Button {size} ghost noAction>장바구니</Button>
 		</div>
 	</div>
 
@@ -26,7 +29,7 @@
 <style lang="scss">
 	.root {
 		width: 100%;
-		height: 13rem;
+		height: 100%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;

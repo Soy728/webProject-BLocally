@@ -2,6 +2,7 @@
 	import { ProductItem } from '@src/components-route/product-item';
 	import { CategorySwitch, type CategorySwitchItem } from '@src/components-route/category-switch';
 	import { Dropdown, type DropdownItem } from '@src/components/dropdown';
+
 	let selectedId: string = 'all';
 	let items: CategorySwitchItem[] = [
 		{ id: 'all', text: '전체', link: '/product/category/all' },
@@ -23,7 +24,6 @@
 </script>
 
 <div class="root">
-	<div class="best-seller-banner">BEST SELLER BANNER</div>
 	<div class="category-switch-container">
 		<CategorySwitch {items} bind:selectedId />
 	</div>
@@ -32,7 +32,6 @@
 	</div>
 	<div class="product-items">
 		{#each Array(3) as _, idx}
-			<ProductItem />
 			<ProductItem />
 			<ProductItem />
 			<ProductItem />
@@ -49,13 +48,7 @@
 		align-items: center;
 		justify-content: center;
 		height: 100%;
-		.best-seller-banner {
-			height: 25rem;
-			width: 100%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
+
 		.dropdown-container {
 			display: flex;
 			height: 3rem;
@@ -72,7 +65,7 @@
 			justify-content: center;
 			gap: 1rem;
 			display: grid;
-			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+			grid-template-columns: 1fr 1fr 1fr 1fr;
 		}
 	}
 </style>

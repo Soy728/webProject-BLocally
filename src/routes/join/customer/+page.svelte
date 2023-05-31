@@ -33,7 +33,6 @@
 			return;
 		}
 
-		console.log('ㅇ이');
 		let data = {
 			username,
 			password,
@@ -126,7 +125,7 @@
 						width="8rem"
 						color={Palette.Color.PRIMARY}
 						size={ComponentSizeProps.XL}
-						onClick={() => {}}>인증 받기</Button
+						onClick={() => {}}>인증받기</Button
 					>
 				</div>
 			</div>

@@ -7,7 +7,7 @@
 	import { clickOutside } from '@src/util/actions/clickOutside';
 	import { attr } from '@src/util/style';
 
-	export let placeholder: string = 'Search';
+	export let placeholder: string = '무엇을 찾으시나요?';
 	let focus = false;
 
 	let value: string = '';

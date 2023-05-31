@@ -137,15 +137,15 @@
 		}
 		&[data-size='sm'] {
 			height: $component-height-sm;
-			font-size: $component-font-size-xs;
+			font-size: $component-font-size-sm;
 		}
 		&[data-size='md'] {
 			height: $component-height-md;
-			font-size: $component-font-size-sm;
+			font-size: $component-font-size-md;
 		}
 		&[data-size='lg'] {
 			height: $component-height-lg;
-			font-size: $component-font-size-md;
+			font-size: $component-font-size-lg;
 		}
 
 		&[data-size='xl'] {

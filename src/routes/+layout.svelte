@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { Header } from '@src/components-route/header';
 	import { QuickMenu } from '@src/components-route/quick-menu';
+	import { Banner } from '@src/components-route/banner';
 </script>
 
 <div class="root">
 	<Header />
+	<Banner />
 	<div class="contents">
 		<slot />
 	</div>
@@ -22,7 +24,7 @@
 			align-items: center;
 			justify-content: center;
 			//	height: 100%;
-			height: calc(100% - 13rem);
+			height: calc(100% - 20rem);
 			padding: 1.5rem 4rem;
 			margin: 0 auto;
 		}
