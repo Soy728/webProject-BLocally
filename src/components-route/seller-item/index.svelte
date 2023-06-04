@@ -7,6 +7,7 @@
 
 	export let seller: SellerInfo;
 	export let detail: boolean = false;
+	export let best: boolean = false;
 </script>
 
 <a href={`/seller/${seller.id}`}>
@@ -15,6 +16,10 @@
 			<div class="image">
 				<Image src={seller.profileImg} cover defaultSize={ComponentSizeProps.XL} />
 			</div>
+
+			{#if best}
+				<div class="tag">명예 생산자</div>
+			{/if}
 		</div>
 		<div class="info-field">
 			<div class="title">
@@ -74,7 +79,7 @@
 	}
 	.root {
 		width: 24rem;
-		height: 30rem;
+		height: 33rem;
 		cursor: pointer;
 
 		&:hover {
@@ -105,6 +110,19 @@
 				background-position: center;
 				background-repeat: no-repeat;
 				transition: transform 0.3s ease-in-out;
+			}
+
+			.tag {
+				position: absolute;
+				right: 1rem;
+				top: 1rem;
+				width: fit-content;
+				height: fit-content;
+				padding: 0.2rem 0.5rem;
+				border-radius: 0.2rem;
+				font-size: 0.9rem;
+				background-color: rgba(50, 171, 178, 0.9);
+				color: white;
 			}
 		}
 		.info-field {

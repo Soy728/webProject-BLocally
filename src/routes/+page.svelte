@@ -58,7 +58,7 @@
 			</div>
 			<div class="items">
 				{#each bestSeller as seller}
-					<SellerItem {seller} />
+					<SellerItem {seller} best />
 				{/each}
 			</div>
 		</div>

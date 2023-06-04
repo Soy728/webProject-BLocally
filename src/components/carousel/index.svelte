@@ -122,7 +122,7 @@
 	.carousel {
 		height: 100%;
 		min-width: 130rem;
-		padding: 2.5rem 0;
+		padding: 2rem 0;
 	}
 
 	button {

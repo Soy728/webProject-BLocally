@@ -92,14 +92,15 @@
 				<Dropdown items={dropdownItems} bind:selectedId={dropdownSelected} />
 			</div>
 		</div>
-
-		<div class="product-items">
-			{#each _productList as item}
-				<ProductItem {item} />
-			{:else}
-				<div class="empty" />
-			{/each}
-		</div>
+		{#if !_.isEmpty(_productList)}
+			<div class="product-items">
+				{#each _productList as item}
+					<ProductItem {item} />
+				{/each}
+			</div>
+		{:else}
+			<div class="empty">{`브로콜리 마켓이 열심히 준비중이예요 : )`}</div>
+		{/if}
 	</div>
 </Layout>
 
@@ -111,6 +112,16 @@
 		align-items: center;
 		justify-content: center;
 		height: 100%;
+
+		.empty {
+			width: 100%;
+			height: 18rem;
+			min-width: 75rem;
+			padding: 3rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
 		.header {
 			display: flex;
 			flex-direction: column;
@@ -132,11 +143,7 @@
 				justify-content: flex-end;
 			}
 		}
-		.empty {
-			width: 100%;
-			height: 100%;
-			min-width: 70rem;
-		}
+
 		.product-items {
 			padding-top: 3rem;
 			display: flex;

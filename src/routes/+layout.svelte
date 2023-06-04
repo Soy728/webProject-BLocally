@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { Header } from '@src/components-route/header';
 	import { QuickMenu } from '@src/components-route/quick-menu';
-	import { Banner } from '@src/components-route/banner';
 </script>
 
 <div class="root">
@@ -11,6 +10,7 @@
 
 <style lang="scss">
 	.root {
+		overflow: hidden;
 		width: 100%;
 		padding: 1rem 1rem;
 	}

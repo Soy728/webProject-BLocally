@@ -10,7 +10,7 @@
 </script>
 
 <Carousel autoplay={4000}>
-	{#each images as image, i}
+	{#each images as image}
 		<div class="item" style="background-image:url({image});" />
 	{/each}
 </Carousel>
@@ -19,13 +19,8 @@
 	.item {
 		border-radius: 0.3rem;
 		height: 18rem;
-		width: 30rem;
+		width: 31rem;
 		background-repeat: no-repeat;
 		background-size: cover;
-	}
-
-	span {
-		display: inline-block;
-		margin-top: 6rem;
 	}
 </style>

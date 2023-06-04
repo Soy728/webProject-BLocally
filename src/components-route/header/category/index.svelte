@@ -36,7 +36,7 @@
 		display: flex;
 		align-items: end;
 		padding: 0.5rem;
-		border-bottom: 1px solid rgba(128, 128, 128, 0.315);
+		border-bottom: 1px solid rgba(180, 180, 180, 0.315);
 
 		.category-container {
 			width: 100%;

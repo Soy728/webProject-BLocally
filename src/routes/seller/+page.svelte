@@ -18,7 +18,7 @@
 	let sellerList: SellerInfo[] = [];
 	function getItemList() {
 		//TODO: API test
-		// let url = 'http://121.137.55.132:8081/item/list';
+		// let url = 'http://121.137.55.132:8081/user/list';
 		// fetch(url, {
 		// 	method: 'GET',
 		// 	mode: 'cors' //중요!!!
@@ -66,7 +66,7 @@
 			</div>
 			<div class="seller-items">
 				{#each bestSeller as seller}
-					<SellerItem {seller} detail />
+					<SellerItem {seller} detail best />
 				{/each}
 			</div>
 		</div>
