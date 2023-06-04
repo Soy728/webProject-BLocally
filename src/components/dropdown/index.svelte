@@ -1,7 +1,7 @@
 <script lang="ts">
 	type T = $$Generic;
 
-	import { mdiMenuDown } from '@mdi/js';
+	import { mdiChevronDown } from '@mdi/js';
 	import { Icon, IconPropType } from '@src/components/icon';
 	import { clickOutside } from '@src/util/actions/clickOutside';
 	import { attr } from '@src/util/style';
@@ -35,8 +35,17 @@
 		<div class="text">
 			{selectedItem?.text}
 		</div>
+
 		<div class="icon">
-			<Icon icon={{ type: IconPropType.PATH, src: mdiMenuDown }} />
+			<Icon
+				icon={{
+					type: IconPropType.PATH,
+					src: mdiChevronDown,
+					scale: 0.65
+				}}
+				rotate={open ? 180 : 0}
+				style={{ transition: `transform 0.1s linear` }}
+			/>
 		</div>
 	</div>
 	<div class="drop-flag">
@@ -81,17 +90,18 @@
 			align-items: center;
 			justify-content: space-between;
 			font-size: 0.82rem;
+			font-weight: 600;
 			height: fit-content;
 			padding: 0.1rem 0.2rem 0.1rem 0.8rem;
 
 			border: solid 1px rgb(217, 217, 217);
+			border-radius: 0.2rem;
 			&:hover {
 				cursor: pointer;
 			}
 			.text {
 				display: flex;
 				align-items: center;
-
 				height: 100%;
 				line-height: 1.3rem;
 			}
@@ -104,6 +114,7 @@
 			position: relative;
 		}
 		.drop-field {
+			border-radius: 0.2rem;
 			width: 100%;
 			position: relative;
 			height: fit-content;
@@ -128,11 +139,15 @@
 				bottom: 1.8rem;
 			}
 			.item {
-				text-align: left;
-				font-size: 0.72rem;
-				padding: 0.5rem 0.4rem;
+				height: 2.3rem;
+				font-size: 0.8rem;
+				padding: 0.4rem 0.6rem;
+				display: flex;
+				align-items: center;
+				justify-content: flex-start;
 				&:hover {
-					background-color: rgba(128, 128, 128, 0.118);
+					color: #73b349;
+					font-weight: 800;
 					cursor: pointer;
 				}
 			}

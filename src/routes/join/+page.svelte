@@ -2,21 +2,24 @@
 	import { Button } from '@src/components/button';
 	import { ComponentSizeProps } from '@src/util/size';
 	import { Palette } from '@src/util/palette';
+	import { Layout } from '@src/components/layout';
 </script>
 
-<div class="root">
-	<div class="content">
-		<div class="text">회원가입</div>
-		<div class="button-container">
-			<Button color={Palette.Color.ACCENT} link={'/join/customer'} size={ComponentSizeProps.XL}
-				>소비자 회원가입</Button
-			>
-			<Button color={Palette.Color.ACCENT} link={'/join/seller'} size={ComponentSizeProps.XL}
-				>판매자 회원가입</Button
-			>
+<Layout>
+	<div class="root">
+		<div class="content">
+			<div class="text">회원가입</div>
+			<div class="button-container">
+				<Button color={Palette.Color.ACCENT} link={'/join/customer'} size={ComponentSizeProps.XL}
+					>소비자 회원가입</Button
+				>
+				<Button color={Palette.Color.ACCENT} link={'/join/seller'} size={ComponentSizeProps.XL}
+					>판매자 회원가입</Button
+				>
+			</div>
 		</div>
 	</div>
-</div>
+</Layout>
 
 <style lang="scss">
 	.root {

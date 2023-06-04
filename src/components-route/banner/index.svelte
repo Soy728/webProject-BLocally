@@ -1,32 +1,18 @@
 <script lang="ts">
 	import { Carousel } from '@src/components/carousel';
-	// let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
-	let images: string[] = [`/image/참외_banner.png`];
+	let images: string[] = [
+		`https://cdn.oasis.co.kr:48581/display/mainBanner/220929183631_mb_W_TOP_JhVV.jpg`,
+		'https://cdn.oasis.co.kr:48581/display/mainBanner/230407163206_mb_W_TOP_NDll.jpg',
+		'https://cdn.oasis.co.kr:48581/display/mainBanner/220726153054_mb_W_TOP_ltaa.jpg',
+		'https://cdn.oasis.co.kr:48581/display/mainBanner/230522111741_mb_W_TOP_tSZz.jpg',
+		'https://cdn.oasis.co.kr:48581/display/mainBanner/230425102156_mb_W_TOP_s8GB.jpg'
+	];
 </script>
 
 <Carousel autoplay={4000}>
-	<!-- <div class="item" style="background-image:url(/image/참외_banner.png);" /> -->
-	<div
-		class="item"
-		style="background-image:url(https://cdn.oasis.co.kr:48581/display/mainBanner/220929183631_mb_W_TOP_JhVV.jpg);"
-	/>
-	<div
-		class="item"
-		style="background-image:url(	https://cdn.oasis.co.kr:48581/display/mainBanner/230407163206_mb_W_TOP_NDll.jpg);"
-	/>
-	<div
-		class="item"
-		style="background-image:url(	https://cdn.oasis.co.kr:48581/display/mainBanner/220726153054_mb_W_TOP_ltaa.jpg);"
-	/>
-
-	<div
-		class="item"
-		style="background-image:url(https://cdn.oasis.co.kr:48581/display/mainBanner/230522111741_mb_W_TOP_tSZz.jpg);"
-	/>
-	<div
-		class="item"
-		style="background-image:url(https://cdn.oasis.co.kr:48581/display/mainBanner/230425102156_mb_W_TOP_s8GB.jpg);"
-	/>
+	{#each images as image, i}
+		<div class="item" style="background-image:url({image});" />
+	{/each}
 </Carousel>
 
 <style lang="scss">

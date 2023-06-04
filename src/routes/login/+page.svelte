@@ -4,6 +4,7 @@
 	import { Button } from '@src/components/button';
 	import { ComponentSizeProps } from '@src/util/size';
 	import { Palette } from '@src/util/palette';
+	import { Layout } from '@src/components/layout';
 
 	let username = '';
 	let password = '';
@@ -21,7 +22,7 @@
 
 		console.log(JSON.stringify(data));
 
-		let url = 'http://localhost:8081/auth/login';
+		let url = 'http://121.137.55.132:8081/auth/login';
 
 		fetch(url, {
 			method: 'POST',
@@ -34,6 +35,7 @@
 			.then((res) => res.json())
 			.then((response) => {
 				let message = response['data'];
+				console.log(response);
 				alert(message);
 			})
 			.catch((error) => {
@@ -42,33 +44,41 @@
 	}
 </script>
 
-<div class="root">
-	<div class="content">
-		<div class="text">로그인</div>
-		<div class="input-container">
-			<Input border fit size={ComponentSizeProps.XL} bind:value={username} placeholder={'아이디'} />
-			<Input
-				fit
-				border
-				type="password"
-				size={ComponentSizeProps.XL}
-				bind:value={password}
-				placeholder={'비밀번호'}
-			/>
-		</div>
-		<Button fit color={Palette.Color.ACCENT} size={ComponentSizeProps.XL} onClick={handleLogin}
-			>로그인
-		</Button>
+<Layout>
+	<div class="root">
+		<div class="content">
+			<div class="text">로그인</div>
+			<div class="input-container">
+				<Input
+					border
+					fit
+					size={ComponentSizeProps.XL}
+					bind:value={username}
+					placeholder={'아이디'}
+				/>
+				<Input
+					fit
+					border
+					type="password"
+					size={ComponentSizeProps.XL}
+					bind:value={password}
+					placeholder={'비밀번호'}
+				/>
+			</div>
+			<Button fit color={Palette.Color.ACCENT} size={ComponentSizeProps.XL} onClick={handleLogin}
+				>로그인
+			</Button>
 
-		<div class="button-tag">
-			<Button size={ComponentSizeProps.LG} ghost noAction link={'/join'}>회원가입</Button>
-			<div class="line" />
-			<Button size={ComponentSizeProps.LG} ghost noAction link={'/join'}>아이디 찾기</Button>
-			<div class="line" />
-			<Button size={ComponentSizeProps.LG} ghost noAction link={'/join'}>비밀번호 변경</Button>
+			<div class="button-tag">
+				<Button size={ComponentSizeProps.LG} ghost noAction link={'/join'}>회원가입</Button>
+				<div class="line" />
+				<Button size={ComponentSizeProps.LG} ghost noAction link={'/join'}>아이디 찾기</Button>
+				<div class="line" />
+				<Button size={ComponentSizeProps.LG} ghost noAction link={'/join'}>비밀번호 변경</Button>
+			</div>
 		</div>
 	</div>
-</div>
+</Layout>
 
 <style lang="scss">
 	.root {

@@ -1,44 +1,107 @@
 <script lang="ts">
+	import _ from 'lodash';
 	import { ProductItem } from '@src/components-route/product-item';
 	import { CategorySwitch, type CategorySwitchItem } from '@src/components-route/category-switch';
 	import { Dropdown, type DropdownItem } from '@src/components/dropdown';
+	import { Layout } from '@src/components/layout';
+	import { Banner } from '@src/components-route/banner';
+	import { productListSample } from '@src/routes/product/category';
+	import type { ItemInfo } from '@src/components-route/product-item';
+	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 
-	let selectedId: string = 'all';
+	let selectedId: string = $page.params.category;
 	let items: CategorySwitchItem[] = [
-		{ id: 'all', text: '전체', link: '/product/category/all' },
-		{ id: 'fruit', text: '과일', link: '/product/category/fruit' },
-		{ id: 'vegetable', text: '채소', link: '/product/category/vegetable' },
-		{ id: 'grain', text: '쌀/잡곡', link: '/product/category/grain' },
-		{ id: 'fish', text: '수산물', link: '/product/category/fish' },
-		{ id: 'meat', text: '축산물', link: '/product/category/meat' }
+		{ id: '100', text: '전체', link: '/product/category/100' },
+		{ id: '0', text: '과일', link: '/product/category/0' },
+		{ id: '1', text: '채소', link: '/product/category/1' },
+		{ id: '2', text: '쌀/잡곡', link: '/product/category/2' },
+		{ id: '3', text: '수산물', link: '/product/category/3' },
+		{ id: '4', text: '축산물', link: '/product/category/4' },
+		{ id: '5', text: '기타', link: '/product/category/5' }
 	];
 
 	let dropdownItems: DropdownItem[] = [
-		{ id: 'best', text: '베스트순' },
-		{ id: 'newest', text: '신상품순' },
-		{ id: 'name', text: '상품명순' },
-		{ id: 'cheapest', text: '낮은 가격순' }
+		{ id: 'recommand', text: '추천순' }, //추천수,
+		{ id: 'review', text: '리뷰많은순' }, //리뷰수
+		{ id: 'sold', text: '판매순' }, //등록일자
+		{ id: 'newest', text: '신상품순' }, //등록일자
+		{ id: 'cheapest', text: '낮은 가격순' } //가격
 	];
 
+	let productList: ItemInfo[] = [];
+	function getItemList() {
+		//TODO: API test
+		// let url = 'http://121.137.55.132:8081/item/list';
+		// fetch(url, {
+		// 	method: 'GET',
+		// 	mode: 'cors' //중요!!!
+		// })
+		// 	.then((res) => res.json())
+		// 	.then((response) => {
+		// 		sellerList = response;
+		// 		console.log(response);
+		// 	})
+		// 	.catch((error) => {
+		// 		alert('에러: ' + error.message);
+		// 	});
+		productList = productListSample;
+	}
+
+	onMount(() => {
+		getItemList();
+	});
+
+	$: _productListCateg =
+		Number(selectedId) !== 100
+			? _(productList)
+					.filter((d) => d.category === Number(selectedId))
+					.value()
+			: productList;
+
 	let dropdownSelected = dropdownItems[0].id;
+	$: _productList =
+		dropdownSelected === 'recommand'
+			? _(_productListCateg)
+					.orderBy((d) => d.rcmdCnt, ['desc'])
+					.value()
+			: dropdownSelected === 'review'
+			? _(_productListCateg)
+					.orderBy((d) => d.reviewCnt, ['desc'])
+					.value()
+			: dropdownSelected === 'newest'
+			? _(_productListCateg)
+					.orderBy((d) => d.endDate, ['desc'])
+					.value()
+			: dropdownSelected === 'cheapest'
+			? _(_productListCateg)
+					.orderBy((d) => d.price)
+					.value()
+			: _(_productListCateg)
+					.orderBy((d) => d.soldCnt, ['desc'])
+					.value();
 </script>
 
-<div class="root">
-	<div class="category-switch-container">
-		<CategorySwitch {items} bind:selectedId />
+<Banner />
+<Layout>
+	<div class="root">
+		<div class="header">
+			<div class="title">상품</div>
+			<CategorySwitch {items} bind:selectedId />
+			<div class="dropdown-container">
+				<Dropdown items={dropdownItems} bind:selectedId={dropdownSelected} />
+			</div>
+		</div>
+
+		<div class="product-items">
+			{#each _productList as item}
+				<ProductItem {item} />
+			{:else}
+				<div class="empty" />
+			{/each}
+		</div>
 	</div>
-	<div class="dropdown-container">
-		<Dropdown items={dropdownItems} bind:selectedId={dropdownSelected} />
-	</div>
-	<div class="product-items">
-		{#each Array(3) as _, idx}
-			<ProductItem />
-			<ProductItem />
-			<ProductItem />
-			<ProductItem />
-		{/each}
-	</div>
-</div>
+</Layout>
 
 <style lang="scss">
 	.root {
@@ -48,24 +111,40 @@
 		align-items: center;
 		justify-content: center;
 		height: 100%;
-
-		.dropdown-container {
+		.header {
 			display: flex;
-			height: 3rem;
-			width: 100%;
-			flex-direction: row;
+			flex-direction: column;
 			align-items: center;
-			justify-content: flex-end;
+			justify-content: center;
+			gap: 0.8rem;
+			width: 100%;
+			.title {
+				font-size: 1.8rem;
+				font-weight: 700;
+				padding: 2.5rem 0;
+			}
+			.dropdown-container {
+				display: flex;
+				height: 3rem;
+				width: 100%;
+				flex-direction: row;
+				align-items: center;
+				justify-content: flex-end;
+			}
 		}
-
+		.empty {
+			width: 100%;
+			height: 100%;
+			min-width: 70rem;
+		}
 		.product-items {
 			padding-top: 3rem;
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			gap: 1rem;
+			gap: 1.8rem;
 			display: grid;
-			grid-template-columns: 1fr 1fr 1fr 1fr;
+			grid-template-columns: 1fr 1fr 1fr;
 		}
 	}
 </style>

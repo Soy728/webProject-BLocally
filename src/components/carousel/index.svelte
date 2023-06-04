@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Siema from 'siema';
-	import { onMount, createEventDispatcher } from 'svelte';
+	import { createEventDispatcher } from 'svelte';
 	import { browser } from '$app/environment';
 
 	export let perPage = 4;
@@ -12,10 +12,10 @@
 	export let draggable = true;
 	export let multipleDrag = true;
 	export let dots = true;
-	export let controls = true;
 	export let threshold = 7;
 	export let rtl = false;
-	let currentIndex = startIndex;
+
+	$: _currentIndex = startIndex;
 
 	let siema: HTMLDivElement;
 	let controller: any;
@@ -23,9 +23,7 @@
 	const dispatch = createEventDispatcher();
 
 	$: pips = controller ? controller.innerElements : [];
-	$: currentPerPage = controller ? controller.perPage : perPage;
 	$: totalDots = controller ? Math.ceil(controller.innerElements.length) : 0;
-	$: controller && console.log(controller);
 	$: siema &&
 		(() => {
 			controller = new Siema({
@@ -53,10 +51,7 @@
 
 	export function isDotActive(currentIndex: number, dotIndex: number) {
 		if (currentIndex < 0) currentIndex = pips.length + currentIndex;
-		return (
-			currentIndex >= dotIndex * currentPerPage &&
-			currentIndex < dotIndex * currentPerPage + currentPerPage
-		);
+		return currentIndex === dotIndex;
 	}
 
 	export function left() {
@@ -82,7 +77,7 @@
 	}
 
 	function handleChange() {
-		currentIndex = controller.currentSlide;
+		_currentIndex = controller.currentSlide;
 		dispatch('change', {
 			currentSlide: controller.currentSlide,
 			slideCount: controller.innerElements.length
@@ -112,21 +107,11 @@
 		<div class="slides" bind:this={siema}>
 			<slot />
 		</div>
-		<!-- {#if controls}
-			<button class="left" on:click={left} use:resetInterval={autoplay} aria-label="left">
-				left
-			</button>
-			<button class="right" on:click={right} use:resetInterval={autoplay} aria-label="right">
-				right
-			</button>
-		{/if} -->
+
 		{#if dots}
 			<ul>
 				{#each { length: totalDots } as _, i}
-					<li
-						on:click={() => go(i * currentPerPage)}
-						class={isDotActive(currentIndex, i) ? 'active' : ''}
-					/>
+					<li on:click={() => go(i)} data-active={isDotActive(_currentIndex, i)} />
 				{/each}
 			</ul>
 		{/if}
@@ -175,11 +160,11 @@
 		background-color: rgba(255, 255, 255, 0.5);
 		height: 8px;
 		width: 8px;
+		&[data-active='true'] {
+			background-color: rgba(255, 255, 255, 1);
+		}
 	}
 	ul li:hover {
 		background-color: rgba(255, 255, 255, 0.85);
-	}
-	ul li.active {
-		background-color: rgba(255, 255, 255, 1);
 	}
 </style>

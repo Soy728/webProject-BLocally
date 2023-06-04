@@ -1,10 +1,11 @@
 <script lang="ts">
 	import _ from 'lodash';
-
+	import { Banner } from '@src/components-route/banner';
 	import { Button } from '@src/components/button';
 	import { ComponentSizeProps } from '@src/util/size';
 	import { Palette } from '@src/util/palette';
 	import { Input } from '@src/components/input';
+	import { Layout } from '@src/components/layout';
 
 	let username = '';
 	let password = '';
@@ -16,7 +17,7 @@
 	let farmName = '';
 	let profileImg = '';
 
-	function handleInsertUser() {
+	function handleGetSeller() {
 		if (
 			_.isEmpty(username) ||
 			_.isEmpty(password) ||
@@ -50,7 +51,7 @@
 
 		console.log(JSON.stringify(data));
 
-		let url = 'http://localhost:8081/auth/insertUser';
+		let url = 'http://121.137.55.132:8081/auth/insertSeller';
 
 		fetch(url, {
 			method: 'POST',
@@ -62,8 +63,7 @@
 		})
 			.then((res) => res.json())
 			.then((response) => {
-				let message = response['data'];
-				alert(message);
+				console.log(response);
 			})
 			.catch((error) => {
 				alert('에러: ' + error.message);
@@ -71,143 +71,155 @@
 	}
 </script>
 
-<div class="root">
-	<div class="content">
-		<div class="text">판매자 회원가입</div>
-		<div class="input-container">
-			<div class="item">
-				<div class="text">이름</div>
-				<Input border fit size={ComponentSizeProps.XL} bind:value={name} placeholder={'이름'} />
-			</div>
-			<div class="item">
-				<div class="text">아이디</div>
-				<Input
-					border
-					fit
-					size={ComponentSizeProps.XL}
-					bind:value={username}
-					placeholder={'아이디'}
-				/>
-			</div>
-			<div class="item">
-				<div class="text">비밀번호</div>
-				<Input
-					fit
-					border
-					type="password"
-					size={ComponentSizeProps.XL}
-					bind:value={password}
-					placeholder={'비밀번호'}
-				/>
-			</div>
-			<div class="item">
-				<div class="text">비밀번호 확인</div>
-				<Input
-					fit
-					border
-					type="password"
-					size={ComponentSizeProps.XL}
-					bind:value={passwordAuth}
-					placeholder={'비밀번호 확인'}
-				/>
-			</div>
-			<div class="item">
-				<div class="text">이메일</div>
-				<Input border fit size={ComponentSizeProps.XL} bind:value={email} placeholder={'이메일'} />
-			</div>
-			<div class="item">
-				<div class="text">휴대폰 번호</div>
-				<div class="detail">
+<Layout>
+	<div class="root">
+		<div class="content">
+			<div class="text">판매자 회원가입</div>
+			<div class="input-container">
+				<div class="item">
+					<div class="text">이름</div>
+					<Input border fit size={ComponentSizeProps.XL} bind:value={name} placeholder={'이름'} />
+				</div>
+				<div class="item">
+					<div class="text">아이디</div>
 					<Input
 						border
 						fit
 						size={ComponentSizeProps.XL}
-						bind:value={mobile}
-						placeholder={'휴대폰 번호'}
+						bind:value={username}
+						placeholder={'아이디'}
 					/>
-
-					<Button
-						fontStyle={{ fontSize: '1.1rem' }}
-						width="8rem"
-						color={Palette.Color.PRIMARY}
-						size={ComponentSizeProps.XL}
-						onClick={() => {}}>인증받기</Button
-					>
 				</div>
-			</div>
-			<div class="item">
-				<div class="text">인증번호</div>
-				<div class="detail">
-					<Input border fit size={ComponentSizeProps.XL} placeholder={'인증번호'} />
-					<Button
-						fontStyle={{ fontSize: '1.1rem' }}
-						width="8rem"
-						color={Palette.Color.PRIMARY}
-						size={ComponentSizeProps.XL}
-						onClick={() => {}}>확인</Button
-					>
-				</div>
-			</div>
-
-			<div class="item">
-				<div class="text">사업자 등록번호</div>
-				<div class="detail">
+				<div class="item">
+					<div class="text">비밀번호</div>
 					<Input
-						bind:value={busNum}
+						fit
+						border
+						type="password"
+						size={ComponentSizeProps.XL}
+						bind:value={password}
+						placeholder={'비밀번호'}
+					/>
+				</div>
+				<div class="item">
+					<div class="text">비밀번호 확인</div>
+					<Input
+						fit
+						border
+						type="password"
+						size={ComponentSizeProps.XL}
+						bind:value={passwordAuth}
+						placeholder={'비밀번호 확인'}
+					/>
+				</div>
+				<div class="item">
+					<div class="text">이메일</div>
+					<Input
 						border
 						fit
 						size={ComponentSizeProps.XL}
-						placeholder={'사업자 등록번호'}
+						bind:value={email}
+						placeholder={'이메일'}
 					/>
-					<Button
-						fontStyle={{ fontSize: '1.1rem' }}
-						width="8rem"
-						color={Palette.Color.PRIMARY}
-						size={ComponentSizeProps.XL}
-						onClick={() => {}}
-						>확인
-					</Button>
 				</div>
-			</div>
+				<div class="item">
+					<div class="text">휴대폰 번호</div>
+					<div class="detail">
+						<Input
+							border
+							fit
+							size={ComponentSizeProps.XL}
+							bind:value={mobile}
+							placeholder={'휴대폰 번호'}
+						/>
 
-			<div class="item">
-				<div class="text">농장 이름</div>
+						<Button
+							fontStyle={{ fontSize: '1.1rem' }}
+							width="8rem"
+							color={Palette.Color.PRIMARY}
+							size={ComponentSizeProps.XL}
+							onClick={() => {}}>인증받기</Button
+						>
+					</div>
+				</div>
+				<div class="item">
+					<div class="text">인증번호</div>
+					<div class="detail">
+						<Input border fit size={ComponentSizeProps.XL} placeholder={'인증번호'} />
+						<Button
+							fontStyle={{ fontSize: '1.1rem' }}
+							width="8rem"
+							color={Palette.Color.PRIMARY}
+							size={ComponentSizeProps.XL}
+							onClick={() => {}}>확인</Button
+						>
+					</div>
+				</div>
 
-				<Input
-					bind:value={farmName}
-					border
-					fit
-					size={ComponentSizeProps.XL}
-					placeholder={'농장 이름'}
-				/>
-			</div>
-			<div class="item">
-				<div class="text">프로필 이미지</div>
-				<div class="detail">
+				<div class="item">
+					<div class="text">사업자 등록번호</div>
+					<div class="detail">
+						<Input
+							bind:value={busNum}
+							border
+							fit
+							size={ComponentSizeProps.XL}
+							placeholder={'사업자 등록번호'}
+						/>
+						<Button
+							fontStyle={{ fontSize: '1.1rem' }}
+							width="8rem"
+							color={Palette.Color.PRIMARY}
+							size={ComponentSizeProps.XL}
+							onClick={() => {}}
+							>확인
+						</Button>
+					</div>
+				</div>
+
+				<div class="item">
+					<div class="text">농장 이름</div>
+
 					<Input
-						bind:value={profileImg}
+						bind:value={farmName}
 						border
 						fit
 						size={ComponentSizeProps.XL}
-						placeholder={'프로필 이미지'}
+						placeholder={'농장 이름'}
 					/>
-					<Button
-						fontStyle={{ fontSize: '1.1rem' }}
-						width="8rem"
-						color={Palette.Color.PRIMARY}
-						size={ComponentSizeProps.XL}
-						onClick={() => {}}
-						>업로드
-					</Button>
+				</div>
+				<div class="item">
+					<div class="text">프로필 이미지</div>
+					<div class="detail">
+						<Input
+							bind:value={profileImg}
+							border
+							fit
+							size={ComponentSizeProps.XL}
+							placeholder={'프로필 이미지'}
+						/>
+						<Button
+							fontStyle={{ fontSize: '1.1rem' }}
+							width="8rem"
+							color={Palette.Color.PRIMARY}
+							size={ComponentSizeProps.XL}
+							onClick={() => {}}
+							>업로드
+						</Button>
+					</div>
 				</div>
 			</div>
+
+			<Button
+				fit
+				color={Palette.Color.ACCENT}
+				size={ComponentSizeProps.XL}
+				onClick={handleGetSeller}
+				>회원가입
+			</Button>
 		</div>
-
-		<Button fit color={Palette.Color.ACCENT} size={ComponentSizeProps.XL} onClick={handleInsertUser}
-			>회원가입
-		</Button>
 	</div>
-</div>
+</Layout>
 
 <style lang="scss">
 	.root {

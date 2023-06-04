@@ -5,9 +5,10 @@
 	import { PathIcon } from '@src/components/icon/path';
 	import { SVGIcon } from '@src/components/icon/svg';
 	import { Size } from '@src/util/size';
+	import { ComponentSizeProps } from '@src/util/size';
 	import { css, type CSSProperties } from '@src/util/style';
 
-	export let size = Size.Number.md;
+	export let size: ComponentSizeProps = ComponentSizeProps.MD;
 	export let flip: IconFlipProps | undefined | true = undefined;
 	export let rotate: number = 0;
 	export let spin: IconSpinProps | undefined = undefined;
@@ -43,9 +44,25 @@
 	)}
 >
 	{#if icon.type === IconPropType.SVG}
-		<SVGIcon svg={_icon.src} {size} {color} {flip} {rotate} {spin} style={_style} />
+		<SVGIcon
+			svg={_icon.src}
+			size={Size.Number[size]}
+			{color}
+			{flip}
+			{rotate}
+			{spin}
+			style={_style}
+		/>
 	{:else if icon.type === IconPropType.PATH}
-		<PathIcon path={_icon.src} {size} {color} {flip} {rotate} {spin} style={_style} />{/if}
+		<PathIcon
+			path={_icon.src}
+			size={Size.Number[size]}
+			{color}
+			{flip}
+			{rotate}
+			{spin}
+			style={_style}
+		/>{/if}
 </div>
 
 <style lang="scss">

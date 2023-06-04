@@ -5,6 +5,7 @@
 	import { ComponentSizeProps } from '@src/util/size';
 	import { Palette } from '@src/util/palette';
 	import { Input } from '@src/components/input';
+	import { Layout } from '@src/components/layout';
 
 	let username = '';
 	let password = '';
@@ -44,7 +45,7 @@
 
 		console.log(JSON.stringify(data));
 
-		let url = 'http://localhost:8081/auth/insertUser';
+		let url = 'http://121.137.55.132:8081/auth/insertUser';
 
 		fetch(url, {
 			method: 'POST',
@@ -65,94 +66,106 @@
 	}
 </script>
 
-<div class="root">
-	<div class="content">
-		<div class="text">소비자 회원가입</div>
-		<div class="input-container">
-			<div class="item">
-				<div class="text">이름</div>
-				<Input border fit size={ComponentSizeProps.XL} bind:value={name} placeholder={'이름'} />
-			</div>
-			<div class="item">
-				<div class="text">아이디</div>
-				<Input
-					border
-					fit
-					size={ComponentSizeProps.XL}
-					bind:value={username}
-					placeholder={'아이디'}
-				/>
-			</div>
-			<div class="item">
-				<div class="text">비밀번호</div>
-				<Input
-					fit
-					border
-					type="password"
-					size={ComponentSizeProps.XL}
-					bind:value={password}
-					placeholder={'비밀번호'}
-				/>
-			</div>
-			<div class="item">
-				<div class="text">비밀번호 확인</div>
-				<Input
-					fit
-					border
-					type="password"
-					size={ComponentSizeProps.XL}
-					bind:value={passwordAuth}
-					placeholder={'비밀번호 확인'}
-				/>
-			</div>
-			<div class="item">
-				<div class="text">이메일</div>
-				<Input border fit size={ComponentSizeProps.XL} bind:value={email} placeholder={'이메일'} />
-			</div>
-			<div class="item">
-				<div class="text">휴대폰 번호</div>
-				<div class="detail">
+<Layout>
+	<div class="root">
+		<div class="content">
+			<div class="text">소비자 회원가입</div>
+			<div class="input-container">
+				<div class="item">
+					<div class="text">이름</div>
+					<Input border fit size={ComponentSizeProps.XL} bind:value={name} placeholder={'이름'} />
+				</div>
+				<div class="item">
+					<div class="text">아이디</div>
 					<Input
 						border
 						fit
 						size={ComponentSizeProps.XL}
-						bind:value={mobile}
-						placeholder={'휴대폰 번호'}
+						bind:value={username}
+						placeholder={'아이디'}
 					/>
-
-					<Button
-						fontStyle={{ fontSize: '1.1rem' }}
-						width="8rem"
-						color={Palette.Color.PRIMARY}
+				</div>
+				<div class="item">
+					<div class="text">비밀번호</div>
+					<Input
+						fit
+						border
+						type="password"
 						size={ComponentSizeProps.XL}
-						onClick={() => {}}>인증받기</Button
-					>
+						bind:value={password}
+						placeholder={'비밀번호'}
+					/>
+				</div>
+				<div class="item">
+					<div class="text">비밀번호 확인</div>
+					<Input
+						fit
+						border
+						type="password"
+						size={ComponentSizeProps.XL}
+						bind:value={passwordAuth}
+						placeholder={'비밀번호 확인'}
+					/>
+				</div>
+				<div class="item">
+					<div class="text">이메일</div>
+					<Input
+						border
+						fit
+						size={ComponentSizeProps.XL}
+						bind:value={email}
+						placeholder={'이메일'}
+					/>
+				</div>
+				<div class="item">
+					<div class="text">휴대폰 번호</div>
+					<div class="detail">
+						<Input
+							border
+							fit
+							size={ComponentSizeProps.XL}
+							bind:value={mobile}
+							placeholder={'휴대폰 번호'}
+						/>
+
+						<Button
+							fontStyle={{ fontSize: '1.1rem' }}
+							width="8rem"
+							color={Palette.Color.PRIMARY}
+							size={ComponentSizeProps.XL}
+							onClick={() => {}}>인증받기</Button
+						>
+					</div>
+				</div>
+				<div class="item">
+					<div class="text">인증번호</div>
+					<div class="detail">
+						<Input border fit size={ComponentSizeProps.XL} placeholder={'인증번호'} />
+						<Button
+							fontStyle={{ fontSize: '1.1rem' }}
+							width="8rem"
+							color={Palette.Color.PRIMARY}
+							size={ComponentSizeProps.XL}
+							onClick={() => {}}>확인</Button
+						>
+					</div>
+				</div>
+
+				<div class="item">
+					<div class="text">주소</div>
+					<Input border fit size={ComponentSizeProps.XL} bind:value={addr} placeholder={'주소'} />
 				</div>
 			</div>
-			<div class="item">
-				<div class="text">인증번호</div>
-				<div class="detail">
-					<Input border fit size={ComponentSizeProps.XL} placeholder={'인증번호'} />
-					<Button
-						fontStyle={{ fontSize: '1.1rem' }}
-						width="8rem"
-						color={Palette.Color.PRIMARY}
-						size={ComponentSizeProps.XL}
-						onClick={() => {}}>확인</Button
-					>
-				</div>
-			</div>
-
-			<div class="item">
-				<div class="text">주소</div>
-				<Input border fit size={ComponentSizeProps.XL} bind:value={addr} placeholder={'주소'} />
-			</div>
+			<Button
+				fit
+				color={Palette.Color.ACCENT}
+				size={ComponentSizeProps.XL}
+				onClick={handleInsertUser}
+				>회원가입
+			</Button>
 		</div>
-		<Button fit color={Palette.Color.ACCENT} size={ComponentSizeProps.XL} onClick={handleInsertUser}
-			>회원가입
-		</Button>
 	</div>
-</div>
+</Layout>
 
 <style lang="scss">
 	.root {

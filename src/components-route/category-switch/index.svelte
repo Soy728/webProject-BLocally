@@ -37,7 +37,7 @@
 <style lang="scss">
 	.root {
 		display: flex;
-		width: 70rem;
+		width: 80rem;
 		gap: 1rem;
 
 		align-items: center;

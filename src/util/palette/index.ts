@@ -27,7 +27,7 @@ export namespace Palette {
 
 	export const ColorUnit: Harmony = {
 		primary: {
-			base: { color: '#333333', backgroundColor: '#dcdfe3', borderColor: '#bebfc2' },
+			base: { color: '#333333', backgroundColor: '#ebeef2', borderColor: '#bebfc2' },
 			hover: { color: '#333333', backgroundColor: '#dfe2e6', borderColor: '#bebfc2' },
 			active: { color: '#FFFFFF', backgroundColor: '#333333', borderColor: '#333333' }
 		},
