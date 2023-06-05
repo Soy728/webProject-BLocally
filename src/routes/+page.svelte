@@ -1,16 +1,16 @@
 <script lang="ts">
-	import _, { slice } from 'lodash';
+	import _ from 'lodash';
 	import { Layout } from '@src/components/layout';
 	import { Banner } from '@src/components-route/banner';
 	import type { SellerInfo } from '@src/components-route/seller-item';
 	// import { sellerListSample } from '@src/routes/seller';
-	import { productListSample } from '@src/routes/product/category';
+	//import { productListSample } from '@src/routes/product/category';
 	import { onMount } from 'svelte';
 	import { SellerItem } from '@src/components-route/seller-item';
-	import { Button } from '@src/components/button';
 	import { ProductItem, type ItemInfo } from '@src/components-route/product-item';
 	import { mdiChevronRight } from '@mdi/js';
 	import { IconPropType, Icon } from '@src/components/icon';
+	import { Event } from '@src/components-route/event';
 
 	let sellerList: SellerInfo[] = [];
 	let itemList: ItemInfo[] = [];
@@ -55,7 +55,7 @@
 		.orderBy((d) => d.score, ['desc'])
 		.slice(0, 3)
 		.value();
-	$: regular_delivery = _(productListSample)
+	$: regular_delivery = _(itemList)
 		.filter((d) => d.dlvrPossible === 1)
 		.value();
 </script>
@@ -89,7 +89,7 @@
 				</a>
 			</div>
 			<div class="items">
-				{#each productListSample.slice(0, 6) as item}
+				{#each itemList.slice(0, 6) as item}
 					<ProductItem {item} />
 				{/each}
 			</div>
@@ -120,11 +120,7 @@
 					</div>
 				</a>
 			</div>
-			<div class="items">
-				<!-- {#each bestSeller as seller}
-					<SellerItem {seller} />
-				{/each} -->
-			</div>
+			<Event summary />
 		</div>
 
 		<div class="group">

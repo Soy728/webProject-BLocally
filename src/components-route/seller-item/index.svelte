@@ -79,7 +79,7 @@
 	}
 	.root {
 		width: 24rem;
-		height: 33rem;
+		height: fit-content;
 		cursor: pointer;
 
 		&:hover {
@@ -90,7 +90,7 @@
 
 			.image-field {
 				.image {
-					transform: scale(1.08);
+					transform: scale(1.03);
 				}
 			}
 		}

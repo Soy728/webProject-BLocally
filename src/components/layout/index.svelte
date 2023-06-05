@@ -9,7 +9,7 @@
 		align-items: center;
 		justify-content: center;
 		height: calc(100% - 20rem);
-		padding: 1.5rem 4rem;
+		padding: 1.5rem 4rem 8rem 4rem;
 		margin: 0 auto;
 	}
 </style>

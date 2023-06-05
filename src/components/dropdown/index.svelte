@@ -82,7 +82,7 @@
 
 <style lang="scss">
 	.root {
-		width: 10rem;
+		width: 12rem;
 
 		.button-field {
 			height: 1.3rem;

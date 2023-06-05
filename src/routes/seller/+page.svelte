@@ -6,27 +6,24 @@
 	import { Dropdown, type DropdownItem } from '@src/components/dropdown';
 	import { onMount } from 'svelte';
 	import type { SellerInfo } from '@src/components-route/seller-item';
-	import { sellerListSample } from '.';
 
 	let dropdownItems: DropdownItem[] = [
-		{ id: 'best', text: '베스트순' }, //score:  리뷰 평균?,
-		{ id: 'recommand', text: '추천순' }, //추천수,
-		{ id: 'review', text: '리뷰 많은 순' } //리뷰수
+		{ id: 'best', text: '베스트순' },
+		{ id: 'recommand', text: '추천순' },
+		{ id: 'review', text: '리뷰 많은 순' }
 	];
 
 	let dropdownSelected = dropdownItems[0].id;
 	let sellerList: SellerInfo[] = [];
 	function getItemList() {
-		//TODO: API test
 		let url = 'http://121.137.55.132:8081/seller/list';
 		fetch(url, {
 			method: 'GET',
-			mode: 'cors' //중요!!!
+			mode: 'cors'
 		})
 			.then((res) => res.json())
 			.then((response) => {
 				sellerList = response;
-				console.log(response);
 			})
 			.catch((error) => {
 				alert('에러: ' + error.message);

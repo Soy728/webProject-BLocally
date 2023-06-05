@@ -5,36 +5,33 @@
 	import { Dropdown } from '@src/components/dropdown';
 	import type { DropdownItem } from '@src/components/dropdown';
 	import type { ItemInfo } from '@src/components-route/product-item';
-	// import { productListSample } from '@src/routes/product/category';
 	import { onMount } from 'svelte';
 	import { ProductItem } from '@src/components-route/product-item';
 
 	let dropdownItems: DropdownItem[] = [
-		{ id: 'recommand', text: '추천순' }, //추천수,
-		{ id: 'review', text: '리뷰많은순' }, //리뷰수
-		{ id: 'sold', text: '판매순' }, //등록일자
-		{ id: 'newest', text: '신상품순' }, //등록일자
-		{ id: 'cheapest', text: '낮은 가격순' } //가격
+		{ id: 'recommand', text: '추천순' },
+		{ id: 'review', text: '리뷰많은순' },
+		{ id: 'sold', text: '판매순' },
+		{ id: 'newest', text: '신상품순' },
+		{ id: 'cheapest', text: '낮은 가격순' }
 	];
 	let productList: ItemInfo[] = [];
 	function getItemList() {
-		//TODO: API test
 		let url = 'http://121.137.55.132:8081/item/list';
 		fetch(url, {
 			method: 'GET',
-			mode: 'cors' //중요!!!
+			mode: 'cors'
 		})
 			.then((res) => res.json())
 			.then((response) => {
 				productList = response;
-				console.log(response);
+				productList = _(productList)
+					.filter((d) => d.dlvrPossible == 1)
+					.value();
 			})
 			.catch((error) => {
 				alert('에러: ' + error.message);
 			});
-		productList = _(productList)
-			.filter((d) => d.dlvrPossible === 1)
-			.value();
 	}
 	onMount(() => {
 		getItemList();
@@ -87,7 +84,6 @@
 	.root {
 		display: flex;
 		flex-direction: column;
-		gap: 3rem;
 		align-items: center;
 		justify-content: center;
 		height: 100%;
@@ -96,7 +92,6 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-			gap: 0.8rem;
 			width: 100%;
 			.title {
 				font-size: 1.8rem;

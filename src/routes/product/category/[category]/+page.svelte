@@ -107,7 +107,7 @@
 	.root {
 		display: flex;
 		flex-direction: column;
-		gap: 3rem;
+		gap: 1rem;
 		align-items: center;
 		justify-content: center;
 		height: 100%;
@@ -135,7 +135,7 @@
 			}
 			.dropdown-container {
 				display: flex;
-				height: 3rem;
+				height: 4rem;
 				width: 100%;
 				flex-direction: row;
 				align-items: center;

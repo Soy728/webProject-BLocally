@@ -2,6 +2,7 @@
 	import { Button } from '@src/components/button';
 	import { Search } from '@src/components/search';
 	import { ComponentSizeProps } from '@src/util/size';
+	import { Icon, IconPropType } from '@src/components/icon';
 	import { Category } from '.';
 
 	let size: ComponentSizeProps = ComponentSizeProps.SM;
@@ -19,10 +20,16 @@
 			<Button {size} ghost noAction>장바구니</Button>
 		</div>
 	</div>
-
-	<div class="search-container">
-		<Search />
+	<div class="contents">
+		<a href="/">
+			<div class="logo" style="background-image:url(/logo/renew_0.5x.png)" />
+			<!-- <div class="logo" style="background-image:url(/logo/basic_0.5x.png)" /> -->
+		</a>
+		<div class="search-container">
+			<Search />
+		</div>
 	</div>
+
 	<Category />
 </div>
 
@@ -47,12 +54,30 @@
 				flex-direction: row;
 			}
 		}
-
-		.search-container {
+		.contents {
 			width: 100%;
+			height: 100%;
 			padding: 1.5rem 0rem;
-			display: flex;
+			display: grid;
+			grid-template-columns: 15rem 40rem;
+			gap: 2rem;
 			justify-content: center;
+			align-items: center;
+			a {
+				height: 100%;
+				width: 100%;
+				.logo {
+					height: 100%;
+					width: 100%;
+					background-repeat: no-repeat;
+					background-size: cover;
+				}
+			}
+			.search-container {
+				width: 100%;
+				display: flex;
+				justify-content: center;
+			}
 		}
 	}
 </style>

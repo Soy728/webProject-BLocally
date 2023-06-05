@@ -12,10 +12,11 @@
 
 	let sellerId = $page.params.sellerId;
 	let seller: SellerInfo;
-	//sellerId or username
+
 	function getItemList() {
 		//TODO: API test
-		// let url = 'http://121.137.55.132:8081/item/list/{sellerId} ';
+		// console.log(sellerId);
+		// let url = `http://121.137.55.132:8081/item/list/${sellerId}`;
 		// fetch(url, {
 		// 	method: 'GET',
 		// 	mode: 'cors' //중요!!!
@@ -29,12 +30,13 @@
 		// 		alert('에러: ' + error.message);
 		// 	});
 		seller = _(sellerListSample)
-			.filter((d) => String(d.id) === sellerId)
+			.filter((d) => String(d.username) === sellerId)
 			.value()[0];
 	}
+	$: console.log(seller);
 	$: category = ['과일', '채소', '쌀/잡곡'];
 	onMount(() => {
-		sellerId && getItemList();
+		getItemList();
 	});
 </script>
 

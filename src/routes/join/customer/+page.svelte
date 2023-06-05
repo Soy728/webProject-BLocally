@@ -6,6 +6,8 @@
 	import { Palette } from '@src/util/palette';
 	import { Input } from '@src/components/input';
 	import { Layout } from '@src/components/layout';
+	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 
 	let username = '';
 	let password = '';
@@ -49,7 +51,7 @@
 
 		fetch(url, {
 			method: 'POST',
-			mode: 'cors', //중요!!!
+			mode: 'cors',
 			headers: {
 				'Content-Type': 'application/json; charset=utf-8'
 			},
@@ -59,6 +61,10 @@
 			.then((response) => {
 				let message = response['data'];
 				alert(message);
+
+				if (response.status == 200) {
+					goto('/join/success', { replaceState: true, keepFocus: true });
+				}
 			})
 			.catch((error) => {
 				alert('에러: ' + error.message);
