@@ -18,20 +18,19 @@
 	let sellerList: SellerInfo[] = [];
 	function getItemList() {
 		//TODO: API test
-		// let url = 'http://121.137.55.132:8081/user/list';
-		// fetch(url, {
-		// 	method: 'GET',
-		// 	mode: 'cors' //중요!!!
-		// })
-		// 	.then((res) => res.json())
-		// 	.then((response) => {
-		// 		sellerList = response;
-		// 		console.log(response);
-		// 	})
-		// 	.catch((error) => {
-		// 		alert('에러: ' + error.message);
-		// 	});
-		sellerList = sellerListSample;
+		let url = 'http://121.137.55.132:8081/seller/list';
+		fetch(url, {
+			method: 'GET',
+			mode: 'cors' //중요!!!
+		})
+			.then((res) => res.json())
+			.then((response) => {
+				sellerList = response;
+				console.log(response);
+			})
+			.catch((error) => {
+				alert('에러: ' + error.message);
+			});
 	}
 
 	onMount(() => {

@@ -5,7 +5,6 @@
 	import { Dropdown, type DropdownItem } from '@src/components/dropdown';
 	import { Layout } from '@src/components/layout';
 	import { Banner } from '@src/components-route/banner';
-	import { productListSample } from '@src/routes/product/category';
 	import type { ItemInfo } from '@src/components-route/product-item';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
@@ -32,20 +31,20 @@
 	let productList: ItemInfo[] = [];
 	function getItemList() {
 		//TODO: API test
-		// let url = 'http://121.137.55.132:8081/item/list';
-		// fetch(url, {
-		// 	method: 'GET',
-		// 	mode: 'cors' //중요!!!
-		// })
-		// 	.then((res) => res.json())
-		// 	.then((response) => {
-		// 		sellerList = response;
-		// 		console.log(response);
-		// 	})
-		// 	.catch((error) => {
-		// 		alert('에러: ' + error.message);
-		// 	});
-		productList = productListSample;
+		let url = 'http://121.137.55.132:8081/item/list';
+		fetch(url, {
+			method: 'GET',
+			mode: 'cors' //중요!!!
+		})
+			.then((res) => res.json())
+			.then((response) => {
+				productList = response;
+				console.log(response);
+			})
+			.catch((error) => {
+				alert('에러: ' + error.message);
+			});
+		// productList = productListSample;
 	}
 
 	onMount(() => {

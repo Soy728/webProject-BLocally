@@ -22,7 +22,7 @@
 		// })
 		// 	.then((res) => res.json())
 		// 	.then((response) => {
-		// 		sellerList = response;
+		// 		seller = response;
 		// 		console.log(response);
 		// 	})
 		// 	.catch((error) => {

@@ -738,7 +738,6 @@ export const productListSample: ItemInfo[] = [
 		name: '최상급 곡성 머스크 멜론 2수 당일수확',
 		soldCnt: 0,
 		reviewCnt: 0,
-
 		score: 0,
 		rcmdCnt: 54,
 		dlvrPossible: 1,

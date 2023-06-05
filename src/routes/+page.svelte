@@ -3,36 +3,52 @@
 	import { Layout } from '@src/components/layout';
 	import { Banner } from '@src/components-route/banner';
 	import type { SellerInfo } from '@src/components-route/seller-item';
-	import { sellerListSample } from '@src/routes/seller';
+	// import { sellerListSample } from '@src/routes/seller';
 	import { productListSample } from '@src/routes/product/category';
 	import { onMount } from 'svelte';
 	import { SellerItem } from '@src/components-route/seller-item';
 	import { Button } from '@src/components/button';
-	import { ProductItem } from '@src/components-route/product-item';
+	import { ProductItem, type ItemInfo } from '@src/components-route/product-item';
 	import { mdiChevronRight } from '@mdi/js';
 	import { IconPropType, Icon } from '@src/components/icon';
 
 	let sellerList: SellerInfo[] = [];
+	let itemList: ItemInfo[] = [];
 	function getItemList() {
-		//TODO: API test
-		// let url = 'http://121.137.55.132:8081/item/list';
-		// fetch(url, {
-		// 	method: 'GET',
-		// 	mode: 'cors' //중요!!!
-		// })
-		// 	.then((res) => res.json())
-		// 	.then((response) => {
-		// 		sellerList = response;
-		// 		console.log(response);
-		// 	})
-		// 	.catch((error) => {
-		// 		alert('에러: ' + error.message);
-		// 	});
-		sellerList = sellerListSample;
+		let url = 'http://121.137.55.132:8081/item/list';
+		fetch(url, {
+			method: 'GET',
+			mode: 'cors' //중요!!!
+		})
+			.then((res) => res.json())
+			.then((response) => {
+				itemList = response;
+				console.log(response);
+			})
+			.catch((error) => {
+				alert('에러: ' + error.message);
+			});
+	}
+
+	function getSellerList() {
+		let url = 'http://121.137.55.132:8081/seller/list';
+		fetch(url, {
+			method: 'GET',
+			mode: 'cors' //중요!!!
+		})
+			.then((res) => res.json())
+			.then((response) => {
+				sellerList = response;
+				console.log(response);
+			})
+			.catch((error) => {
+				alert('에러: ' + error.message);
+			});
 	}
 
 	onMount(() => {
 		getItemList();
+		getSellerList();
 	});
 
 	$: bestSeller = _(sellerList)

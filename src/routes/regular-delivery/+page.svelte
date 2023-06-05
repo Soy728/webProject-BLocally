@@ -5,7 +5,7 @@
 	import { Dropdown } from '@src/components/dropdown';
 	import type { DropdownItem } from '@src/components/dropdown';
 	import type { ItemInfo } from '@src/components-route/product-item';
-	import { productListSample } from '@src/routes/product/category';
+	// import { productListSample } from '@src/routes/product/category';
 	import { onMount } from 'svelte';
 	import { ProductItem } from '@src/components-route/product-item';
 
@@ -19,20 +19,20 @@
 	let productList: ItemInfo[] = [];
 	function getItemList() {
 		//TODO: API test
-		// let url = 'http://121.137.55.132:8081/item/list';
-		// fetch(url, {
-		// 	method: 'GET',
-		// 	mode: 'cors' //중요!!!
-		// })
-		// 	.then((res) => res.json())
-		// 	.then((response) => {
-		// 		sellerList = response;
-		// 		console.log(response);
-		// 	})
-		// 	.catch((error) => {
-		// 		alert('에러: ' + error.message);
-		// 	});
-		productList = _(productListSample)
+		let url = 'http://121.137.55.132:8081/item/list';
+		fetch(url, {
+			method: 'GET',
+			mode: 'cors' //중요!!!
+		})
+			.then((res) => res.json())
+			.then((response) => {
+				productList = response;
+				console.log(response);
+			})
+			.catch((error) => {
+				alert('에러: ' + error.message);
+			});
+		productList = _(productList)
 			.filter((d) => d.dlvrPossible === 1)
 			.value();
 	}
