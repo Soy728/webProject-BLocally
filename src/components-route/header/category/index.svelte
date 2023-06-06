@@ -13,7 +13,7 @@
 		<Button color={Palette.Color.SECONDARY} ghost {size}>
 			<Icon
 				icon={{ type: IconPropType.PATH, src: mdiMenu }}
-				style={{ marginTop: '0.1rem' }}
+				style={{ marginRight: '0.6rem' }}
 				slot="left-icon"
 			/>
 			전체 카테고리
@@ -43,7 +43,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			gap: 2.5rem;
+			gap: 2.8rem;
 			white-space: nowrap;
 		}
 	}

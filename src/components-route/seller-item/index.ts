@@ -17,3 +17,4 @@ export interface SellerInfo {
 	username: string;
 	password: string;
 }
+

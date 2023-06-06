@@ -7,7 +7,7 @@
 	import { Input } from '@src/components/input';
 	import { Layout } from '@src/components/layout';
 	import { goto } from '$app/navigation';
-	import { onMount } from 'svelte';
+
 
 	let username = '';
 	let password = '';

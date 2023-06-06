@@ -6,9 +6,19 @@
 	import { Palette } from '@src/util/palette';
 	import { Layout } from '@src/components/layout';
 	import { goto } from '$app/navigation';
+	import { userInfo } from '@src/util/info/user/store';
 
 	let username = '';
 	let password = '';
+	$: userInfo.set({
+		id: 1,
+		addr: '경기도 수원시 장안구 정자천로',
+		create_date: '20220506',
+		email: 'kksm456@naver.com',
+		mobile: '01094553492',
+		name: '이소희',
+		username: 'kksm456'
+	});
 
 	function handleLogin() {
 		if (_.isEmpty(username) || _.isEmpty(password)) {
@@ -36,6 +46,15 @@
 				let message = response['data'];
 				alert(message);
 				if (response.status == 200) {
+					userInfo.set({
+						id: 1,
+						addr: 'string',
+						create_date: 'string',
+						email: 'string',
+						mobile: 'string',
+						name: 'string',
+						username: 'string'
+					});
 					goto('/', { replaceState: true, keepFocus: true });
 				}
 			})
