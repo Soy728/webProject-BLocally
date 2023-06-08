@@ -3,19 +3,39 @@
 	import { Search } from '@src/components/search';
 	import { ComponentSizeProps } from '@src/util/size';
 	import { Category } from '.';
+	import { userInfo } from '@src/util/info/user/store';
 
 	let size: ComponentSizeProps = ComponentSizeProps.SM;
+	$: userId = $userInfo;
 </script>
 
 <div class="root">
 	<div class="menu-container">
 		<div class="base-menu">
-			<Button {size} noAction ghost link={'/mypage/main'}>마이페이지</Button>
+			{#if userId !== -1}
+				<Button {size} noAction ghost link={'/mypage'}>마이페이지</Button>
+			{/if}
 		</div>
 		<div class="user-menu">
-			<Button {size} ghost noAction link={'/login'}>로그인</Button>
-			<Button {size} ghost noAction link={'/join'}>회원가입</Button>
-			<Button {size} ghost noAction link={'/mypage/order'}>주문/배송조회</Button>
+			{#if userId === -1}
+				<Button {size} ghost noAction link={'/login'}>로그인</Button>
+				<Button {size} ghost noAction link={'/join'}>회원가입</Button>
+			{:else}
+				<Button
+					{size}
+					ghost
+					noAction
+					link={'/'}
+					onClick={() => {
+						userInfo.set(-1);
+						alert('로그아웃 되었습니다.');
+					}}
+				>
+					로그아웃
+				</Button>
+			{/if}
+
+			<Button {size} ghost noAction link={'/mypage'}>주문/배송조회</Button>
 			<Button {size} ghost noAction>장바구니</Button>
 		</div>
 	</div>

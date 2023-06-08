@@ -40,11 +40,14 @@
 		"kakao-map-api": "^0.0.3",
 		"lodash": "^4.17.21",
 		"module-alias": "^2.2.2",
+		"moment": "^2.29.4",
 		"node-sass": "^8.0.0",
 		"numeral": "^2.0.6",
 		"path": "^0.12.7",
+		"s-date-range-picker": "^0.3.0",
 		"sass": "^1.59.2",
 		"siema": "^1.5.1",
+		"svelte-calendar": "^3.1.6",
 		"tenel-kakao-map": "^1.1.2"
 	}
 }

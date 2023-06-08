@@ -10,15 +10,6 @@
 
 	let username = '';
 	let password = '';
-	$: userInfo.set({
-		id: 1,
-		addr: '경기도 수원시 장안구 정자천로',
-		create_date: '20220506',
-		email: 'kksm456@naver.com',
-		mobile: '01094553492',
-		name: '이소희',
-		username: 'kksm456'
-	});
 
 	function handleLogin() {
 		if (_.isEmpty(username) || _.isEmpty(password)) {
@@ -43,18 +34,10 @@
 		})
 			.then((res) => res.json())
 			.then((response) => {
-				let message = response['data'];
-				alert(message);
 				if (response.status == 200) {
-					userInfo.set({
-						id: 1,
-						addr: 'string',
-						create_date: 'string',
-						email: 'string',
-						mobile: 'string',
-						name: 'string',
-						username: 'string'
-					});
+					const name = response?.data?.name || '';
+					alert(`${name}님 로그인 성공`);
+					userInfo.set(response.data.id);
 					goto('/', { replaceState: true, keepFocus: true });
 				}
 			})

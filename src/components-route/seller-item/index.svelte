@@ -10,7 +10,7 @@
 	export let best: boolean = false;
 </script>
 
-<a href={`/seller/${seller.username}`}>
+<a href={`/seller/${seller.id}`}>
 	<div class="root">
 		<div class="image-field">
 			<div class="image">

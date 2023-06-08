@@ -14,26 +14,23 @@
 	let seller: SellerInfo;
 
 	function getItemList() {
-		//TODO: API test
-		// console.log(sellerId);
-		// let url = `http://121.137.55.132:8081/item/list/${sellerId}`;
-		// fetch(url, {
-		// 	method: 'GET',
-		// 	mode: 'cors' //중요!!!
-		// })
-		// 	.then((res) => res.json())
-		// 	.then((response) => {
-		// 		seller = response;
-		// 		console.log(response);
-		// 	})
-		// 	.catch((error) => {
-		// 		alert('에러: ' + error.message);
-		// 	});
+		let url = `http://121.137.55.132:8081/seller/${sellerId}`;
+		fetch(url, {
+			method: 'GET',
+			mode: 'cors'
+		})
+			.then((res) => res.json())
+			.then((response) => {
+				seller = response;
+			})
+			.catch((error) => {
+				alert('에러: ' + error.message);
+			});
 		seller = _(sellerListSample)
 			.filter((d) => String(d.username) === sellerId)
 			.value()[0];
 	}
-	$: console.log(seller);
+
 	$: category = ['과일', '채소', '쌀/잡곡'];
 	onMount(() => {
 		getItemList();
@@ -53,6 +50,13 @@
 				<div class="info">
 					<div class="farm-name">
 						{seller.farmName}
+					</div>
+					<div class="tag-unit">
+						{#each category as c}
+							<div class="tag">
+								# {c}
+							</div>
+						{/each}
 					</div>
 					<div class="detail">
 						<div class="unit">
@@ -74,17 +78,10 @@
 							{seller.story}
 						</div>
 
-						<div class="tag-unit">
-							{#each category as c}
-								<div class="tag">
-									# {c}
-								</div>
-							{/each}
-						</div>
 						<div class="command">
-							<div class="recommend">추천수{seller.recommend}</div>
-							<div class="revNum">리뷰수{seller.revNum}</div>
-							<div class="score">평점{seller.score}</div>
+							<div class="recommend">추천수 {seller.recommend}</div>
+							<div class="revNum">리뷰수 {seller.revNum}</div>
+							<div class="score">평점 {seller.score}</div>
 						</div>
 					</div>
 				</div>
@@ -114,13 +111,13 @@
 		gap: 5rem;
 		.seller-profile {
 			display: grid;
-			grid-template-columns: 43rem auto;
+			grid-template-columns: 40rem auto;
 			width: 100%;
 			height: 100%;
 
 			.image-field {
-				width: 43rem;
-				height: 30rem;
+				width: 40rem;
+				height: 27rem;
 				position: relative;
 
 				.image {
@@ -138,20 +135,19 @@
 				display: flex;
 				flex-direction: column;
 				padding: 0rem 3rem;
-				gap: 3rem;
+				gap: 1rem;
 				min-width: 35rem;
 				.detail {
 					display: flex;
 					flex-direction: column;
-					padding: 0rem 0.5rem;
-					gap: 1.5rem;
+					padding: 2rem 0.5rem;
+					gap: 1.7rem;
 				}
 
 				.farm-name {
 					font-size: 1.8rem;
 					font-weight: 800;
 					border-bottom: 2px solid rgb(75, 75, 75);
-					// width: fit-content;
 					padding: 0.5rem 0rem;
 				}
 
@@ -183,7 +179,6 @@
 						justify-content: center;
 						min-width: 4rem;
 						padding: 0.45rem 1rem;
-						// background-color: rgba(239, 239, 239, 0.463);
 						border-radius: 1rem;
 						color: #6ba543;
 						border: 1px solid #6ba543;
@@ -192,9 +187,10 @@
 				.command {
 					display: flex;
 					align-items: center;
-					justify-content: flex-start;
+					justify-content: flex-end;
 					font-size: 0.9rem;
-					gap: 1rem;
+					gap: 2rem;
+					font-weight: 800;
 				}
 			}
 		}

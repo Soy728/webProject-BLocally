@@ -1,12 +1,3 @@
-import { writable } from 'svelte/store';
+import { WritableStorage } from '@src/lib/writable-storage';
 
-export interface UserInfo {
-	id: number;
-	addr: string;
-	create_date: string;
-	email: string;
-	mobile: string;
-	name: string;
-	username: string;
-}
-export const userInfo = writable<UserInfo>();
+export const userInfo = WritableStorage.persisted<number>('user', -1);

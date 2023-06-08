@@ -3,8 +3,6 @@
 	import { Layout } from '@src/components/layout';
 	import { Banner } from '@src/components-route/banner';
 	import type { SellerInfo } from '@src/components-route/seller-item';
-	// import { sellerListSample } from '@src/routes/seller';
-	//import { productListSample } from '@src/routes/product/category';
 	import { onMount } from 'svelte';
 	import { SellerItem } from '@src/components-route/seller-item';
 	import { ProductItem, type ItemInfo } from '@src/components-route/product-item';
@@ -23,7 +21,6 @@
 			.then((res) => res.json())
 			.then((response) => {
 				itemList = response;
-				console.log(response);
 			})
 			.catch((error) => {
 				alert('에러: ' + error.message);
@@ -39,7 +36,6 @@
 			.then((res) => res.json())
 			.then((response) => {
 				sellerList = response;
-				console.log(response);
 			})
 			.catch((error) => {
 				alert('에러: ' + error.message);
@@ -121,22 +117,6 @@
 				</a>
 			</div>
 			<Event summary />
-		</div>
-
-		<div class="group">
-			<div class="header">
-				<a href={`/farm`}>
-					<div class="title">
-						농장체험
-						<Icon icon={{ type: IconPropType.PATH, src: mdiChevronRight, scale: 1.23 }} />
-					</div>
-				</a>
-			</div>
-			<div class="items">
-				<!-- {#each bestSeller as seller}
-					<SellerItem {seller} />
-				{/each} -->
-			</div>
 		</div>
 	</div>
 </Layout>
