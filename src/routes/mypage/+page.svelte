@@ -42,22 +42,6 @@
 		return res;
 	}
 
-	function getItemInfo(itemId: number) {
-		let url = `http://121.137.55.132:8081/item/${itemId}`;
-		const res = fetch(url, {
-			method: 'GET',
-			mode: 'cors' //중요!!!
-		})
-			.then((res) => res.json())
-			.then((response) => {
-				return response;
-			})
-			.catch((error) => {
-				alert('에러: ' + error.message);
-			});
-		return res;
-	}
-
 	onMount(async () => {
 		user = await getUserInfo();
 		order = await getOrderInfo();

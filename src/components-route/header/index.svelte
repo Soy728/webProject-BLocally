@@ -4,8 +4,12 @@
 	import { ComponentSizeProps } from '@src/util/size';
 	import { Category } from '.';
 	import { userInfo } from '@src/util/info/user/store';
+	import { Palette } from '@src/util/palette';
+	import { Modal } from '@src/components/modal';
+	import { LocationModal } from '@src/components-route/location-modal';
 
 	let size: ComponentSizeProps = ComponentSizeProps.SM;
+	let enable = false;
 	$: userId = $userInfo;
 </script>
 
@@ -42,17 +46,46 @@
 	<div class="contents">
 		<a href="/">
 			<div class="logo" style="background-image:url(/logo/renew_0.5x.png)" />
-			<!-- <div class="logo" style="background-image:url(/logo/basic_0.5x.png)" /> -->
 		</a>
 		<div class="search-container">
 			<Search />
 		</div>
+		{#if userId !== -1}
+			<Button
+				color={Palette.Color.ACCENT}
+				onClick={() => {
+					enable = true;
+				}}>로컬리</Button
+			>
+		{/if}
 	</div>
 
 	<Category />
 </div>
+<Modal bind:active={enable}>
+	<div class="modal">
+		<div class="title">로컬농장 위치</div>
+		<LocationModal />
+	</div>
+</Modal>
 
 <style lang="scss">
+	.modal {
+		display: flex;
+		width: 100%;
+		height: 100%;
+		background-color: rgb(255, 255, 255);
+		border-radius: 0.3rem;
+		flex-direction: column;
+
+		.title {
+			padding: 0.5rem 1rem;
+			font-weight: 800;
+			font-size: 1.1rem;
+			background-color: #6ba543;
+			color: white;
+		}
+	}
 	.root {
 		width: 100%;
 		height: 100%;
@@ -78,7 +111,7 @@
 			height: 100%;
 			padding: 1.5rem 0rem;
 			display: grid;
-			grid-template-columns: 15rem 40rem;
+			grid-template-columns: 15rem 40rem 3rem;
 			gap: 2rem;
 			justify-content: center;
 			align-items: center;

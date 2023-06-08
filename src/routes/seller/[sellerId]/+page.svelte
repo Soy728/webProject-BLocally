@@ -10,10 +10,10 @@
 	import { ProductItem } from '@src/components-route/product-item';
 	import { productListSample } from '@src/routes/product/category';
 
-	let sellerId = $page.params.sellerId;
+	$: sellerId = $page.params.sellerId;
 	let seller: SellerInfo;
 
-	function getItemList() {
+	function getItemList(sellerId: string) {
 		let url = `http://121.137.55.132:8081/seller/${sellerId}`;
 		fetch(url, {
 			method: 'GET',
@@ -32,9 +32,8 @@
 	}
 
 	$: category = ['과일', '채소', '쌀/잡곡'];
-	onMount(() => {
-		getItemList();
-	});
+
+	$: sellerId && getItemList(sellerId);
 </script>
 
 <Layout>
