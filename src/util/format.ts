@@ -1,7 +1,7 @@
-import numeral from 'numeral';
 import _ from 'lodash';
-import moment from 'moment';
 import type { Moment } from 'moment';
+import numeral from 'numeral';
+import moment from 'moment';
 
 type DateType = number | string | Date | Moment | undefined;
 export function formatPrice(value: number) {
