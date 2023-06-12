@@ -1,5 +1,4 @@
 <script lang="ts">
-	import _ from 'lodash';
 	import { Layout } from '@src/components/layout';
 	import { Event } from '@src/components-route/event';
 </script>

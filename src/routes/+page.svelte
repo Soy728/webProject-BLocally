@@ -1,8 +1,8 @@
 <script lang="ts">
 	import _ from 'lodash';
+	import type { SellerInfo } from '@src/components-route/seller-item';
 	import { Layout } from '@src/components/layout';
 	import { Banner } from '@src/components-route/banner';
-	import type { SellerInfo } from '@src/components-route/seller-item';
 	import { onMount } from 'svelte';
 	import { SellerItem } from '@src/components-route/seller-item';
 	import { ProductItem, type ItemInfo } from '@src/components-route/product-item';
@@ -12,6 +12,7 @@
 
 	let sellerList: SellerInfo[] = [];
 	let itemList: ItemInfo[] = [];
+
 	function getItemList() {
 		let url = 'http://121.137.55.132:8081/item/list';
 		fetch(url, {

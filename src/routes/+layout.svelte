@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Header } from '@src/components-route/header';
-	import { QuickMenu } from '@src/components-route/quick-menu';
 </script>
 
 <div class="root">

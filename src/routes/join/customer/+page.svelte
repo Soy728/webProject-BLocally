@@ -8,7 +8,6 @@
 	import { Layout } from '@src/components/layout';
 	import { goto } from '$app/navigation';
 
-
 	let username = '';
 	let password = '';
 	let passwordAuth = '';
@@ -44,8 +43,6 @@
 			mobile,
 			addr
 		};
-
-		console.log(JSON.stringify(data));
 
 		let url = 'http://121.137.55.132:8081/auth/insertUser';
 

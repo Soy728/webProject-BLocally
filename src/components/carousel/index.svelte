@@ -15,13 +15,12 @@
 	export let threshold = 7;
 	export let rtl = false;
 
-	$: _currentIndex = startIndex;
-
 	let siema: HTMLDivElement;
 	let controller: any;
 	let timer: NodeJS.Timer;
 	const dispatch = createEventDispatcher();
 
+	$: _currentIndex = startIndex;
 	$: pips = controller ? controller.innerElements : [];
 	$: totalDots = controller ? Math.ceil(controller.innerElements.length) : 0;
 	$: siema &&
@@ -125,26 +124,6 @@
 		padding: 2rem 0;
 	}
 
-	button {
-		width: 40px;
-		height: 40px;
-		top: 50%;
-		z-index: 50;
-		margin-top: -20px;
-		border: none;
-		background-color: transparent;
-	}
-	button:focus {
-		outline: none;
-	}
-
-	.left {
-		left: 2vw;
-	}
-
-	.right {
-		right: 2vw;
-	}
 	ul {
 		list-style-type: none;
 		position: absolute;

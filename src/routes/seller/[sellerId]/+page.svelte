@@ -1,8 +1,7 @@
 <script lang="ts">
 	import _ from 'lodash';
-	import { Layout } from '@src/components/layout';
-	import { onMount } from 'svelte';
 	import type { SellerInfo } from '@src/components-route/seller-item';
+	import { Layout } from '@src/components/layout';
 	import { page } from '$app/stores';
 	import { sellerListSample } from '..';
 	import { Image } from '@src/components/image';
@@ -10,8 +9,8 @@
 	import { ProductItem } from '@src/components-route/product-item';
 	import { productListSample } from '@src/routes/product/category';
 
-	$: sellerId = $page.params.sellerId;
 	let seller: SellerInfo;
+	let category = ['과일', '채소', '쌀/잡곡'];
 
 	function getItemList(sellerId: string) {
 		let url = `http://121.137.55.132:8081/seller/${sellerId}`;
@@ -31,8 +30,7 @@
 			.value()[0];
 	}
 
-	$: category = ['과일', '채소', '쌀/잡곡'];
-
+	$: sellerId = $page.params.sellerId;
 	$: sellerId && getItemList(sellerId);
 </script>
 

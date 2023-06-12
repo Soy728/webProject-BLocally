@@ -1,7 +1,7 @@
 <script lang="ts">
 	import _ from 'lodash';
-	import { ComponentSizeProps } from '@src/util/size';
 	import type { CSSProperties } from '@src/util/style';
+	import { ComponentSizeProps } from '@src/util/size';
 	import { getStyleStringUnit, attr, css } from '@src/util/style';
 	import { createEventDispatcher } from 'svelte';
 	import { Palette } from '@src/util/palette';

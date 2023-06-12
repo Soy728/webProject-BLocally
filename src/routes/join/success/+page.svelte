@@ -1,11 +1,10 @@
 <script lang="ts">
 	import _ from 'lodash';
-	import { Input } from '@src/components/input';
+
 	import { Button } from '@src/components/button';
 	import { ComponentSizeProps } from '@src/util/size';
 	import { Palette } from '@src/util/palette';
 	import { Layout } from '@src/components/layout';
-	import { goto } from '$app/navigation';
 	import { mdiChevronRight } from '@mdi/js';
 	import { IconPropType, Icon } from '@src/components/icon';
 </script>

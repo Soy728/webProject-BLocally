@@ -45,7 +45,7 @@
 	</div>
 	<div class="contents">
 		<a href="/">
-			<div class="logo" style="background-image:url(/logo/renew_0.5x.png)" />
+			<div class="logo" style="background-image:url(/logo/basic_0.5x.png)" />
 		</a>
 		<div class="search-container">
 			<Search />
@@ -112,7 +112,7 @@
 			padding: 1.5rem 0rem;
 			display: grid;
 			grid-template-columns: 15rem 40rem 3rem;
-			gap: 2rem;
+			gap: 1.8rem;
 			justify-content: center;
 			align-items: center;
 			a {

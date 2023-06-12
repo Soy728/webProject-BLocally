@@ -60,7 +60,7 @@
 			.value();
 	});
 
-	function enableDeliverFun(userAddr: string, sellerAddr: string) {
+	export function enableDeliverFun(userAddr: string, sellerAddr: string) {
 		const userAddrSplit = userAddr.split(' ')[0];
 		const sellerAddrSplit = sellerAddr.split(' ')[0];
 

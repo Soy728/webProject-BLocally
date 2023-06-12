@@ -1,11 +1,11 @@
 <script lang="ts">
 	import _ from 'lodash';
-	import { Banner } from '@src/components-route/banner';
 	import { Button } from '@src/components/button';
 	import { ComponentSizeProps } from '@src/util/size';
 	import { Palette } from '@src/util/palette';
 	import { Input } from '@src/components/input';
 	import { Layout } from '@src/components/layout';
+	import { goto } from '$app/navigation';
 
 	let username = '';
 	let password = '';
@@ -49,8 +49,6 @@
 			profileImg
 		};
 
-		console.log(JSON.stringify(data));
-
 		let url = 'http://121.137.55.132:8081/auth/insertSeller';
 
 		fetch(url, {
@@ -63,7 +61,12 @@
 		})
 			.then((res) => res.json())
 			.then((response) => {
-				console.log(response);
+				let message = response['data'];
+				alert(message);
+
+				if (response.status == 200) {
+					goto('/join/success', { replaceState: true, keepFocus: true });
+				}
 			})
 			.catch((error) => {
 				alert('에러: ' + error.message);

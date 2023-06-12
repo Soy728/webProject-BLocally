@@ -21,16 +21,16 @@
 	];
 
 	let dropdownItems: DropdownItem[] = [
-		{ id: 'recommand', text: '추천순' }, //추천수,
-		{ id: 'review', text: '리뷰많은순' }, //리뷰수
-		{ id: 'sold', text: '판매순' }, //등록일자
-		{ id: 'newest', text: '신상품순' }, //등록일자
-		{ id: 'cheapest', text: '낮은 가격순' } //가격
+		{ id: 'recommand', text: '추천순' }, 
+		{ id: 'review', text: '리뷰많은순' }, 
+		{ id: 'sold', text: '판매순' }, 
+		{ id: 'newest', text: '신상품순' }, 
+		{ id: 'cheapest', text: '낮은 가격순' } 
 	];
 
 	let productList: ItemInfo[] = [];
 	function getItemList() {
-		//TODO: API test
+
 		let url = 'http://121.137.55.132:8081/item/list';
 		fetch(url, {
 			method: 'GET',
@@ -44,7 +44,7 @@
 			.catch((error) => {
 				alert('에러: ' + error.message);
 			});
-		// productList = productListSample;
+
 	}
 
 	onMount(() => {

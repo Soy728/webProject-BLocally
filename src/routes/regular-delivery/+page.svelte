@@ -15,7 +15,9 @@
 		{ id: 'newest', text: '신상품순' },
 		{ id: 'cheapest', text: '낮은 가격순' }
 	];
+
 	let productList: ItemInfo[] = [];
+	let dropdownSelected = dropdownItems[0].id;
 	function getItemList() {
 		let url = 'http://121.137.55.132:8081/item/list';
 		fetch(url, {
@@ -37,7 +39,6 @@
 		getItemList();
 	});
 
-	let dropdownSelected = dropdownItems[0].id;
 	$: _productList =
 		dropdownSelected === 'recommand'
 			? _(productList)

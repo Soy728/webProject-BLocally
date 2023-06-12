@@ -17,7 +17,6 @@
 	let selectedId: string = $page.params.productId;
 	let productInfo: ItemInfo;
 	let count = 1;
-
 	$: userId = $userInfo;
 	$: startSelected = new Date();
 	$: endSelected = moment(moment(new Date()).format('YYYY-MM-DD')).add(21, 'd').toDate();

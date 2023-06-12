@@ -2,7 +2,7 @@
 	import { Button } from '@src/components/button';
 	import { Icon, IconPropType } from '@src/components/icon';
 	import { ComponentSizeProps } from '@src/util/size';
-	import { mdiMenu, mdiAccount } from '@mdi/js';
+	import { mdiMenu } from '@mdi/js';
 	import { Palette } from '@src/util/palette';
 
 	let size: ComponentSizeProps = ComponentSizeProps.LG;
@@ -25,7 +25,7 @@
 		<Button color={Palette.Color.SECONDARY} ghost link={'/regular-delivery'} {size}>정기배송</Button
 		>
 		<Button color={Palette.Color.SECONDARY} ghost link={'/event'} {size}>이벤트</Button>
-		<Button color={Palette.Color.SECONDARY} ghost link={'/farm'} {size}>농장체험</Button>
+		<Button color={Palette.Color.SECONDARY} ghost {size}>농장체험</Button>
 	</div>
 </div>
 

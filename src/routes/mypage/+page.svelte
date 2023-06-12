@@ -6,15 +6,16 @@
 	import type { UserInfo, OrderInfo } from '.';
 	import { OrderItem } from '@src/components-route/order-item';
 
-	$: userId = $userInfo;
 	let user: UserInfo;
 	let order: OrderInfo[];
+
+	$: userId = $userInfo;
 
 	function getUserInfo() {
 		let url = `http://121.137.55.132:8081/user/${userId}`;
 		const res = fetch(url, {
 			method: 'GET',
-			mode: 'cors' //중요!!!
+			mode: 'cors'
 		})
 			.then((res) => res.json())
 			.then((response) => {
@@ -30,7 +31,7 @@
 		let url = `http://121.137.55.132:8081/order/list/${userId}`;
 		const res = fetch(url, {
 			method: 'GET',
-			mode: 'cors' //중요!!!
+			mode: 'cors'
 		})
 			.then((res) => res.json())
 			.then((response) => {

@@ -1,8 +1,8 @@
 <script lang="ts">
+	import { type CSSProperties, attr, css } from '@src/util/style';
 	import { mdiLoading } from '@mdi/js';
 	import { Icon, IconPropType, IconSpinProps } from '@src/components/icon';
 	import { ComponentSizeProps } from '@src/util/size';
-	import { type CSSProperties, attr, css } from '@src/util/style';
 
 	export let src: string | Promise<string> | undefined;
 	export let style: CSSProperties = {};
