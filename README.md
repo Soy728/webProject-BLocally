@@ -1,4 +1,4 @@
-# [Blocally]: 로컬 푸드 직배송 플랫폼
+# [Blocally: Brand Locally] 로컬 푸드 직배송 플랫폼 
 
 ![basic_4x](https://github.com/Soy728/webProject-BLocally/assets/77173342/24a5b2f8-b404-4861-af6a-31e2103664f8)
 
