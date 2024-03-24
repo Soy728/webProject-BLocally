@@ -4,7 +4,7 @@
 
 <br />
 
-## 프로젝트 소개
+## 💁 프로젝트 소개
 > 2023.03.05 ~ 2022.07.10 - AJOU University Media Project
 <br />
 
@@ -16,12 +16,14 @@
 <br />
 <br />
 
-## 핵심기능 소개
+## 👩‍💻 핵심기능 소개
 ### 1. 카카오맵 API를 활용한 직배송 가능 여부 확인 기능
 - 소비자는 가까운 거리에 있어 직배송이 가능한 농장을 확인하고, 물건을 구매 할 수 있습니다.
 - 직배송이 가능한 농장의 위치를 확인하고 해당 농장이 판매하는 상품들을 구매할 수 있도록 구현해 둔 기능입니다.
 <img width="650" alt="image" src="https://github.com/Soy728/webProject-BLocally/assets/77173342/6d5a354a-7d99-40e3-8441-221e86538071">
 
+
+<br />
 
 ### 2. 자영업자를 위한 정기 배송 기능 구현
 - 캘린더의 날짜 지정하여 주기적으로 상품을 제공 받을 수 있습니다.
@@ -30,14 +32,17 @@
 <img width="400" alt="image" src="https://github.com/Soy728/webProject-BLocally/assets/77173342/2b6bb08c-17f1-477b-af5c-f2d489f56561">
 
 
+<br />
+
 ### 3. 보기 쉬운 리스팅과 필터링 기능
 - 상품 탭을 클릭하면 농산물이 종류별로 분류되어 있으며 사용자가 원하는 순서대로 리스팅하여 볼 수 있습니다.
 - 로컬 농장 탭을 통해 개별 농장이 판매하는 상품들을 한눈에 볼 수 있습니다.
+<br />
 
 <br />
 <br />
 
-## 프론트앤드 기술 스택
+## ⛏️ 프론트앤드 기술 스택
 <div style="display:flex; flex-direction:row;">
     <img src="https://img.shields.io/badge/typescript-3178C6?style=flat-square&logo=typescript&logoColor=black"> 
     <img src="https://img.shields.io/badge/svelte-FF3E00?style=flat-square&logo=svelte&logoColor=black"> 
@@ -110,7 +115,7 @@
 │   └── time.ts
 │   
 └──📂 static
-│   └── 📂 logo
+    └── 📂 logo
 
 ```
 
